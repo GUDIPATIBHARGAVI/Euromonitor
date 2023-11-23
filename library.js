@@ -1,20 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Library = void 0;
-var IBook_1 = require("./IBook");
+var Bookdetails_1 = require("./Bookdetails");
 var readlineSync = require("readline-sync");
 var Library = /** @class */ (function () {
     function Library() {
         this.books = [];
     }
     Library.prototype.addBook = function (title, author) {
-        var newBook = new IBook_1.IBook(title, author);
+        var newBook = new Bookdetails_1.Book(title, author);
         this.books.push(newBook);
         console.log("Book added to the library: ".concat(title, " by ").concat(author));
     };
     Library.prototype.displaySearchResults = function (searchResults) {
         console.log("Search Results:");
-        searchResults.forEach(function (book) { return book.displayDetails(); });
+        searchResults.forEach(function (book) { return book.displaybookDetails(); });
     };
     Library.prototype.listAllBooks = function () {
         console.log("Available books in the library:");
@@ -33,7 +33,7 @@ var Library = /** @class */ (function () {
         var bookIndex = this.promptBookSelection("Select a book to check out:");
         if (bookIndex !== -1 && this.books[bookIndex].borrowBook()) {
             console.log("You have successfully checked out the following book:");
-            this.books[bookIndex].displayDetails();
+            this.books[bookIndex].displaybookDetails();
         }
     };
     Library.prototype.returnBook = function () {
@@ -41,7 +41,7 @@ var Library = /** @class */ (function () {
         if (bookIndex !== -1) {
             this.books[bookIndex].returnBook();
             console.log("You have successfully returned the following book:");
-            this.books[bookIndex].displayDetails();
+            this.books[bookIndex].displaybookDetails();
         }
     };
     Library.prototype.removeBook = function () {

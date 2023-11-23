@@ -1,19 +1,22 @@
-import { IBook } from "./IBook";
+import { Book } from "./Bookdetails";
+import { IBook } from "./iBook";
 import * as readlineSync from "readline-sync";
-export class Library {
-  private books: IBook[] = [];
 
-  addBook(title: string, author: string): void {
-    const newBook = new IBook(title, author);
+export class Library {
+  public books: Book[] = [];
+
+  public addBook(title: string, author: string): void {
+    const newBook = new Book(title, author);
     this.books.push(newBook);
     console.log(`Book added to the library: ${title} by ${author}`);
   }
 
-  displaySearchResults(searchResults: IBook[]): void {
+  public displaySearchResults(searchResults: IBook[]): void {
     console.log("Search Results:");
-    searchResults.forEach((book) => book.displayDetails());
+    searchResults.forEach((book) => book.displaybookDetails());
   }
-  listAllBooks(): void {
+
+  public listAllBooks(): void {
     console.log("Available books in the library:");
     this.books.forEach((book, index) => {
       console.log(
@@ -24,7 +27,7 @@ export class Library {
     });
   }
 
-  searchBooks(query: string): IBook[] {
+  public searchBooks(query: string): IBook[] {
     const result = this.books.filter(
       (book) =>
         book.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -33,24 +36,24 @@ export class Library {
     return result;
   }
 
-  checkoutBook(): void {
+  public checkoutBook(): void {
     const bookIndex = this.promptBookSelection("Select a book to check out:");
     if (bookIndex !== -1 && this.books[bookIndex].borrowBook()) {
       console.log(`You have successfully checked out the following book:`);
-      this.books[bookIndex].displayDetails();
+      this.books[bookIndex].displaybookDetails();
     }
   }
 
-  returnBook(): void {
+  public returnBook(): void {
     const bookIndex = this.promptBookSelection("Select a book to return:");
     if (bookIndex !== -1) {
       this.books[bookIndex].returnBook();
       console.log(`You have successfully returned the following book:`);
-      this.books[bookIndex].displayDetails();
+      this.books[bookIndex].displaybookDetails();
     }
   }
 
-  removeBook(): void {
+  public removeBook(): void {
     const bookIndex = this.promptBookSelection("Select a book to remove:");
     if (bookIndex !== -1) {
       this.books.splice(bookIndex, 1);
