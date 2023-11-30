@@ -1,11 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Movie } from './Imovie';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class MovieDataService {
-  getMovies(): Movie[] {
+import { Imovie } from './Imovie';
+export class movieData {
+  getMovies(): Imovie[] {
     return [
       {
         title: 'Harry potter',

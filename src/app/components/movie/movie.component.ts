@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
-import { Movie } from '../models/Imovie';
-import { MovieDataService } from '../models/movie.model';
+import { Imovie } from '../../models/Imovie';
+import { movieData } from '../../models/movie.model';
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css'],
-  providers: [MovieDataService],
 })
 export class MovieComponent {
-  movies: Movie[];
-  selectedMovie: Movie | null = null;
+  movies: Imovie[];
+  selectedMovie: Imovie | null = null;
 
-  constructor(private movieDataService: MovieDataService) {
+  constructor(private movieDataService: movieData) {
     this.movies = this.movieDataService.getMovies();
   }
 
-  public voteformovie(movie: Movie): void {
+  public voteForMovie(movie: Imovie): void {
     this.selectedMovie = this.selectedMovie === movie ? null : movie;
     if (this.selectedMovie) {
       this.selectedMovie.isVoted = !this.selectedMovie.isVoted;
