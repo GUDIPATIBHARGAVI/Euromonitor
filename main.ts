@@ -5,7 +5,7 @@ import {
   createAccount,
   showBalance,
   displayAccountDetails,
-} from "./interface";
+} from "./Iaccount";
 
 const accounts = {};
 

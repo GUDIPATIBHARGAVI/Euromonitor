@@ -5,7 +5,6 @@ var readlineSync = require("readline-sync");
 exports.readlineSync = readlineSync;
 var bankservice_1 = require("./bankservice");
 var userdetails_1 = require("./userdetails");
-// ... (existing code remains the same)
 function deposit(account) {
     console.log("Initial Balance: " + account.getBalance());
     console.log("Enter the amount to deposit: ");
@@ -19,24 +18,17 @@ function deposit(account) {
     }
 }
 exports.deposit = deposit;
-// ... (existing code remains the same)
-// ... (existing code remains the same)
-// ... (existing code remains the same)
 function withdraw(account) {
     console.log("Enter the amount to withdraw: ");
     var withdrawAmount = parseFloat(readlineSync.prompt());
     if (!isNaN(withdrawAmount)) {
         var currentBalance = account.getBalance();
-        // Check if the withdrawal amount is greater than the balance
         if (withdrawAmount > currentBalance) {
-            var overdraftLimit = 500; // Set your overdraft limit here
-            // Check if the overdraft limit allows covering the withdrawal
+            var overdraftLimit = 500;
             if (withdrawAmount - currentBalance <= overdraftLimit) {
                 console.log("Using overdraft.");
-                // Deduct the amount from the balance (including overdraft)
-                // Assuming there's a deposit method
                 var overdraftAmount = withdrawAmount - currentBalance;
-                account.deposit(-overdraftAmount); // Negative deposit to deduct the amount
+                account.deposit(-overdraftAmount);
                 console.log("Total Balance after withdrawal (including overdraft): 0");
             }
             else {
@@ -44,7 +36,6 @@ function withdraw(account) {
             }
         }
         else {
-            // Sufficient balance, proceed with withdrawal
             var withdrawalResult = account.withdraw(withdrawAmount);
             if (withdrawalResult) {
                 console.log("Total Balance after withdrawal: " + account.getBalance());
@@ -59,12 +50,9 @@ function withdraw(account) {
     }
 }
 exports.withdraw = withdraw;
-// ... (existing code remains the same)
 function accountOptions(account, action) {
-    // List of valid actions
     var validActions = ["deposit", "withdraw"];
     if (action && validActions.indexOf(action) !== -1) {
-        // Action is valid, proceed
         if (action === "deposit") {
             deposit(account);
         }
@@ -73,7 +61,6 @@ function accountOptions(account, action) {
         }
     }
     else {
-        // Invalid action
         console.log("Invalid action. Please choose a valid action.");
     }
 }
@@ -85,14 +72,12 @@ function createAccount() {
     var email = getValidEmail();
     var account = null;
     if (accountType.toLowerCase() === "savings") {
-        // Provide additional parameters for state, location, and country
         var location_1 = getLocation();
         var state = getState();
         var country = getCountry();
         account = createSavingsAccount(customerName, age, location_1, state, country, email);
     }
     else if (accountType.toLowerCase() === "current") {
-        // Provide additional parameters for state, location, and country
         var location_2 = getLocation();
         var state = getState();
         var country = getCountry();
@@ -105,8 +90,6 @@ function createAccount() {
     return null;
 }
 exports.createAccount = createAccount;
-// ... (rest of the code remains the same)
-// Ensure your file has a proper closing brace
 function getAccountType() {
     console.log("Select Account Type (Savings or Current): ");
     return readlineSync.prompt();
@@ -126,7 +109,7 @@ function getValidAge() {
         }
         else if (age > 68) {
             console.log("You are not eligible for account opening.");
-            return NaN; // Returning NaN to signal an invalid age
+            return NaN;
         }
     } while (isNaN(age));
     return age;
@@ -143,7 +126,6 @@ function getCountry() {
     console.log("Country: ");
     return readlineSync.prompt();
 }
-// Add similar functions for getLocation, getState, and getCountry
 function getValidEmail() {
     var email;
     do {
@@ -173,9 +155,7 @@ function setupAccount(account) {
     account.generateAccountNumber(account.getAccountType().toLowerCase());
     console.log("Account created successfully!");
     console.log("Account Number is: " + account.getAccountNumber());
-    // Assuming 'accounts' is defined globally
     userdetails_1.accounts[account.getAccountNumber().toLowerCase()] = account;
-    // Prompt for action only if the account is successfully created
     console.log("Enter action (deposit/withdraw): ");
     var action = readlineSync.prompt();
     accountOptions(account, action);

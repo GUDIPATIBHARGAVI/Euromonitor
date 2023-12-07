@@ -8,7 +8,7 @@ import {
   showBalance,
   displayAccountDetails,
   readlineSync,
-} from "./interface";
+} from "./Iaccount";
 
 const accounts: Record<string, BankAccount> = {};
 

@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.readlineSync = exports.accounts = exports.displayAccountDetails = exports.showBalance = exports.createAccount = exports.accountOptions = exports.withdraw = exports.deposit = void 0;
+var Iaccount_1 = require("./Iaccount");
+Object.defineProperty(exports, "deposit", { enumerable: true, get: function () { return Iaccount_1.deposit; } });
+Object.defineProperty(exports, "withdraw", { enumerable: true, get: function () { return Iaccount_1.withdraw; } });
+Object.defineProperty(exports, "accountOptions", { enumerable: true, get: function () { return Iaccount_1.accountOptions; } });
+Object.defineProperty(exports, "createAccount", { enumerable: true, get: function () { return Iaccount_1.createAccount; } });
+Object.defineProperty(exports, "showBalance", { enumerable: true, get: function () { return Iaccount_1.showBalance; } });
+Object.defineProperty(exports, "displayAccountDetails", { enumerable: true, get: function () { return Iaccount_1.displayAccountDetails; } });
+Object.defineProperty(exports, "readlineSync", { enumerable: true, get: function () { return Iaccount_1.readlineSync; } });
+var accounts = {};
+exports.accounts = accounts;

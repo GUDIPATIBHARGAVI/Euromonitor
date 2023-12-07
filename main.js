@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// main.mjs
 var readlineSync = require("readline-sync");
-var interface_1 = require("./interface");
+var Iaccount_1 = require("./Iaccount");
 var accounts = {};
 function welcomeMessage() {
     console.log("Welcome to our bank application");
@@ -37,7 +36,7 @@ function processOptions(option) {
     }
 }
 function handleCreateAccount() {
-    var createdAccount = (0, interface_1.createAccount)();
+    var createdAccount = (0, Iaccount_1.createAccount)();
     if (createdAccount) {
         accounts[createdAccount.getAccountNumber().toLowerCase()] = createdAccount;
     }
@@ -47,7 +46,7 @@ function handleTransaction(action) {
     var accountNumber = readlineSync.prompt();
     var account = accounts[accountNumber.trim().toLowerCase()];
     if (account) {
-        (0, interface_1.accountOptions)(account, action);
+        (0, Iaccount_1.accountOptions)(account, action);
     }
     else {
         console.log("Account not found for account number: ".concat(accountNumber));
@@ -56,12 +55,12 @@ function handleTransaction(action) {
 function handleBalanceDisplay() {
     console.log("Enter the account number to show balance:");
     var accountNumber = readlineSync.prompt();
-    (0, interface_1.showBalance)(accountNumber);
+    (0, Iaccount_1.showBalance)(accountNumber);
 }
 function handleDetailsDisplay() {
     console.log("Enter the account number to display details:");
     var accountNumber = readlineSync.prompt();
-    (0, interface_1.displayAccountDetails)(accountNumber);
+    (0, Iaccount_1.displayAccountDetails)(accountNumber);
 }
 function main() {
     welcomeMessage();
