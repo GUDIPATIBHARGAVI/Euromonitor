@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({

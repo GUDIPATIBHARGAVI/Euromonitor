@@ -9,12 +9,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'task-list', component: TaskListComponent },
+  { path: 'task-list', component: TaskListComponent, canActivate: [AuthGuard] },
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
   },
-  { path: 'task-form', component: TaskFormComponent },
+  { path: 'task-form', component: TaskFormComponent, canActivate: [AuthGuard] },
   { path: 'sign-up', component: SignUpComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
