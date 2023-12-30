@@ -1,0 +1,10 @@
+<div class="movie-container" *ngFor="let movie of movies">
+  <h3>{{ movie.title }}</h3>
+  <img [src]="movie.poster" alt="{{ movie.title }} Poster" />
+  <div class="button-container">
+    <button (click)="voteformovie(movie)">
+      {{ movie.isVoted ? "Unvote" : "Vote" }}
+    </button>
+    <p *ngIf="movie.isVoted">Voted!</p>
+  </div>
+</div>
