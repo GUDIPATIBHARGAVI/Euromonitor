@@ -1,0 +1,35 @@
+{
+  "users": [],
+  "signUpusers": [
+    {
+      "fullname": "Bhargavi",
+      "email": "b@gmail.com",
+      "password": "B@1234",
+      "mobile": 8292828290,
+      "id": 1
+    }
+  ],
+  "tasks": [
+    {
+      "title": "a",
+      "completed": false,
+      "category": "a",
+      "dueDate": "2023-12-30",
+      "id": 1
+    },
+    {
+      "title": "b",
+      "completed": false,
+      "category": "b",
+      "dueDate": "2023-12-30",
+      "id": 2
+    },
+    {
+      "title": "c",
+      "completed": false,
+      "category": "c",
+      "dueDate": "2023-12-31",
+      "id": 3
+    }
+  ]
+}
