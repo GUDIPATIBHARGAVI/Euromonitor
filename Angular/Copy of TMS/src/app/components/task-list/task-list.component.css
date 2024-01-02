@@ -1,0 +1,39 @@
+.card-columns {
+  column-count: 3; /* Adjust the column count based on your preference */
+  column-gap: 20pxstyles;
+}
+
+.card {
+  break-inside: avoid-column;
+}
+
+.card-body {
+  margin-bottom: 20px;
+}
+
+.text-right {
+  text-align: right;
+}
+/* Add this to your component's CSS file or your global styles */
+
+.filter-section,
+.sort-section {
+  margin-bottom: 15px;
+}
+
+.filter-label,
+.sort-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.filter-select,
+.sort-select {
+  width: 50%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* You can customize the styles further based on your design preferences */

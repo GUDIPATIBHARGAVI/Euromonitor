@@ -1,0 +1,110 @@
+{
+  "signUpusers": [
+    {
+      "fullname": "Bhargavi",
+      "email": "b@gmail.com",
+      "password": "B@1234",
+      "mobile": 1234567890,
+      "id": 1
+    },
+    {
+      "fullname": "Bhargavi",
+      "email": "bh@gmail.com",
+      "password": "B@1234",
+      "mobile": 9876543210,
+      "id": 2
+    },
+    {
+      "fullname": "Bhargavi",
+      "email": "ga@gmail.com",
+      "password": "B@1234",
+      "mobile": 9898989898,
+      "id": 3
+    },
+    {
+      "fullname": "Bhargavi",
+      "email": "g@gmail.com",
+      "password": "B@1234",
+      "mobile": 9898989897,
+      "id": 4
+    },
+    {
+      "fullname": "B",
+      "email": "gi@gmail.com",
+      "password": "B@1234",
+      "mobile": 9898989899,
+      "id": 5
+    },
+    {
+      "fullname": "Bhargavi",
+      "email": "gr@gmail.com",
+      "password": "B@1234",
+      "mobile": 1212121212,
+      "id": 6
+    },
+    {
+      "fullname": "Bhargavi",
+      "email": "gt@gmail.com",
+      "password": "B@1234",
+      "mobile": 9898989893,
+      "id": 7
+    },
+    {
+      "username": "b@gmail.com",
+      "password": "B@1234",
+      "id": 8
+    },
+    {
+      "username": "b@gmail.com",
+      "password": "B@1234",
+      "apiId": "signUpusers",
+      "id": 9
+    },
+    {
+      "username": "b@gmail.com",
+      "password": "B@1234",
+      "id": 10
+    },
+    {
+      "username": "b@gmail.com",
+      "password": "B@1234",
+      "id": 11
+    },
+    {
+      "username": "b@gmail.com",
+      "password": "B@1234",
+      "id": 12
+    },
+    {
+      "username": "b@gmail.com",
+      "password": "B@1234",
+      "id": 13
+    },
+    {
+      "username": "b@gmail.com",
+      "password": "B@1234",
+      "id": 14
+    },
+    {
+      "username": "b@gmail.com",
+      "password": "B@1234",
+      "id": 15
+    }
+  ],
+  "tasks": [
+    {
+      "id": 3,
+      "title": "vv",
+      "completed": false,
+      "category": "s",
+      "dueDate": "2024-01-02"
+    },
+    {
+      "id": 5,
+      "title": "ab",
+      "completed": true,
+      "category": "a",
+      "dueDate": "2024-01-05"
+    }
+  ]
+}
