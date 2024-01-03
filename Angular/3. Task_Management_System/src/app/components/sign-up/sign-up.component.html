@@ -29,6 +29,15 @@
                   class="form-control"
                   id="exampleInputPassword1"
                 />
+                <div
+                  class="error-message"
+                  *ngIf="
+                    signupForm.get('mobile')?.invalid &&
+                    signupForm.get('mobile')?.touched
+                  "
+                >
+                  {{ getErrorMessage("mobile") }}
+                </div>
               </div>
 
               <div class="mb-3">
@@ -44,6 +53,12 @@
                 />
                 <div id="emailHelp" class="form-text">
                   We'll never share your email with anyone else.
+                </div>
+                <div
+                  class="error-message"
+                  *ngIf="signupForm.get('email')?.hasError('emailTaken')"
+                >
+                  {{ getErrorMessage("email") }}
                 </div>
               </div>
 

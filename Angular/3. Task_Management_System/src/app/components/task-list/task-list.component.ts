@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
 import { Task } from 'src/app/models/Itask';
 import { TaskService } from 'src/app/services/task.service';
 
@@ -14,28 +16,30 @@ export class TaskListComponent implements OnInit {
   selectedCategory: string | undefined;
   sortField: string = 'dueDate';
   sortDirection: string = 'asc';
-  constructor(private taskService: TaskService) {}
+
+  constructor(private taskService: TaskService, private router: Router) {}
+
+  selectedFilter: string = 'category';
 
   ngOnInit(): void {
     this.loadTasks();
   }
 
-  loadTasks(): void {
-    this.taskService.getTasks().subscribe((tasks) => {
+  public loadTasks(): void {
+    this.taskService.getTasksByUser().subscribe((tasks) => {
       this.tasks = tasks;
       this.filteredTasks = tasks;
       this.categories = Array.from(new Set(tasks.map((task) => task.category)));
-      this.sortTasks();
     });
   }
 
-  deleteTask(taskId: number): void {
+  public deleteTask(taskId: number): void {
     this.taskService.deleteTask(taskId).subscribe(() => {
       this.loadTasks();
     });
   }
 
-  filterTasksByCategory(): void {
+  public filterTasksByCategory(): void {
     if (this.selectedCategory) {
       this.filteredTasks = this.tasks.filter(
         (task) => task.category === this.selectedCategory
@@ -43,56 +47,62 @@ export class TaskListComponent implements OnInit {
     } else {
       this.filteredTasks = this.tasks;
     }
-    this.sortTasks();
   }
 
-  sortTasks(): void {
+  public sortTasksByDuedate(): void {
     this.filteredTasks.sort((a, b) => {
-      const aValue = (a as any)[this.sortField];
-      const bValue = (b as any)[this.sortField];
+      const aValue = a[this.sortField];
+      const bValue = b[this.sortField];
 
       if (aValue === bValue) {
         return 0;
       }
 
-      if (this.sortDirection === 'asc') {
-        return aValue < bValue ? -1 : 1;
-      } else {
-        return aValue > bValue ? -1 : 1;
+      let comparison = 0;
+
+      if (aValue > bValue) {
+        comparison = 1;
+      } else if (aValue < bValue) {
+        comparison = -1;
       }
+
+      return this.sortDirection === 'asc' ? comparison : -comparison;
     });
   }
-  editTask(task: Task): void {
-    task.editing = true;
 
+  public editTask(task: Task): void {
+    task.editing = true;
     task.editedTask = { ...task };
   }
 
-  updateTask(task: any): void {
-    const updatedTask = {
-      id: task.id,
-      title: task.editedTask.title,
-      completed: task.editedTask.completed,
-      category: task.editedTask.category,
-      dueDate: task.editedTask.dueDate,
-    };
+  public async updateTask(task: Task): Promise<void> {
+    try {
+      const response = await lastValueFrom(
+        this.taskService.updateTask({
+          ...task,
+          ...task.editedTask,
+          editing: false,
+        })
+      );
 
-    this.taskService.updateTask(updatedTask).subscribe(
-      (response) => {
-        task.editing = false;
-
-        const index = this.tasks.findIndex((t) => t.id === response.id);
-        if (index !== -1) {
-          this.tasks[index] = response;
-        }
-      },
-      (error) => {
-        console.error('Error updating task:', error);
+      const index = this.tasks.findIndex((t) => t.id === response.id);
+      if (index !== -1) {
+        this.tasks[index] = response;
       }
-    );
+    } catch (error) {
+      console.error('Error updating task:', error);
+    }
   }
 
-  cancelEdit(task: any): void {
+  public cancelEdit(task: any): void {
     task.editing = false;
+  }
+
+  public redirectToAddTask(): void {
+    this.router.navigate(['/task-form']);
+  }
+
+  public redirectToDashboard(): void {
+    this.router.navigate(['/dashboard']);
   }
 }

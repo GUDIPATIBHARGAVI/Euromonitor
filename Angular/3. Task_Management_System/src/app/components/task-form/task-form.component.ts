@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-task-form',
   templateUrl: './task-form.component.html',
@@ -17,7 +17,8 @@ export class TaskFormComponent {
     private formBuilder: FormBuilder,
     private taskService: TaskService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService
   ) {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -27,19 +28,23 @@ export class TaskFormComponent {
     });
   }
 
-  addTask(): void {
+  public addTask(): void {
     if (this.taskForm.valid) {
       const taskData = this.taskForm.value;
       this.taskService.setTaskData(taskData);
       const completionStatus = this.taskForm.get('completed')?.value || false;
       this.completionStatusChange.emit(completionStatus);
 
-      this.taskService.addTask(this.taskForm.value).subscribe(() => {
+      this.taskService.addTaskForUser(this.taskForm.value).subscribe(() => {
         this.taskForm.reset({
           title: '',
           completed: false,
         });
+        this.router.navigate(['/task-list']);
       });
     }
+  }
+  public redirectToDashboard(): void {
+    this.router.navigate(['/dashboard']);
   }
 }

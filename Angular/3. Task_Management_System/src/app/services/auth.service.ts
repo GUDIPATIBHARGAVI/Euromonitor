@@ -1,59 +1,69 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, lastValueFrom, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api';
-  private tokenKey = 'authToken';
+  private apiUrl = 'http://localhost:3000';
+  private signUpUsers: any[] = [];
 
-  constructor(private http: HttpClient) {}
-
-  login(username: string, password: string): Observable<any> {
-    const payload = { username, password };
-    console.log('Login Payload:', payload);
-    return this.http.post<any>(`${this.apiUrl}/login`, payload).pipe(
-      tap((response) => {
-        if (response.token) {
-          this.setAuthToken(response.token);
-        }
-      }),
-      catchError(this.handleError<any>('login'))
+  constructor(private http: HttpClient) {
+    lastValueFrom(this.http.get<any[]>(`${this.apiUrl}/signUpusers`)).then(
+      (users) => {
+        this.signUpUsers = users;
+      },
+      (error) => {
+        console.error('Error fetching signUpUsers:', error);
+      }
     );
+  }
+
+  login(email: string, password: string): Observable<any> {
+    const user = this.signUpUsers.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (user) {
+      this.setCurrentUser(user);
+      console.log('User found:', user);
+      return of({ success: true, user });
+    } else {
+      console.log('User not found');
+      return of({ success: false, message: 'Authentication failed' });
+    }
   }
 
   logout(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
-      tap(() => this.clearAuthToken()),
-      catchError(this.handleError<any>('logout'))
-    );
+    this.clearCurrentUser();
+    return of(null);
   }
 
   isLoggedIn(): boolean {
-    return !!this.getAuthToken();
+    return !!this.getCurrentUser();
   }
 
   getUsername(): string | null {
-    const token = this.getAuthToken();
-    if (token) {
-      return 'exampleUsername';
-    }
-    return null;
+    const currentUser = this.getCurrentUser();
+    return currentUser ? currentUser.email : null;
   }
 
-  private setAuthToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token);
+  private setCurrentUser(user: any): void {
+    sessionStorage.setItem('currentUser', JSON.stringify(user));
+  }
+  getUserId(): number | null {
+    const currentUser = this.getCurrentUser();
+    return currentUser ? currentUser.id : null;
   }
 
-  getAuthToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+  private getCurrentUser(): any | null {
+    const userString = sessionStorage.getItem('currentUser');
+    return userString ? JSON.parse(userString) : null;
   }
 
-  private clearAuthToken(): void {
-    localStorage.removeItem(this.tokenKey);
+  private clearCurrentUser(): void {
+    sessionStorage.removeItem('currentUser');
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

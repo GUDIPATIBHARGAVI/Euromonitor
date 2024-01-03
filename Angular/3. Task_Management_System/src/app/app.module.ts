@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './services/auth.guard';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,

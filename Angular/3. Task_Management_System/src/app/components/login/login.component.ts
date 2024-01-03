@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,38 +11,39 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: [''],
-      password: [''],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
-  login() {
-    this.http.get<any>('http://localhost:3000/signUpusers').subscribe(
-      (res) => {
-        const user = res.find((a: any) => {
-          return (
-            a.email === this.loginForm.value.email &&
-            a.password === this.loginForm.value.password
-          );
-        });
-        if (user) {
-          alert('Login success');
-          this.loginForm.reset();
-          this.router.navigate(['dashboard']);
-        } else {
-          alert('user not found');
-        }
-      },
-      (err) => {
-        alert('something is wrong');
+
+  public async login() {
+    try {
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
+
+      const response = await lastValueFrom(
+        this.authService.login(email, password)
+      );
+
+      if (response && response.success) {
+        alert('Login success');
+        this.loginForm.reset();
+        this.router.navigate(['/dashboard']);
+      } else {
+        alert('Authentication failed');
       }
-    );
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Something went wrong');
+    }
   }
 }

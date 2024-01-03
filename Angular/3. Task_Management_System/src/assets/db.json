@@ -1,0 +1,130 @@
+{
+  "signUpusers": [
+    {
+      "fullname": "jane smith",
+      "email": "jane@gmail.com",
+      "password": "ja@1234",
+      "mobile": 9898989898,
+      "id": 1
+    },
+    {
+      "fullname": "john doe",
+      "email": "john@gmail.com",
+      "password": "jo@1234",
+      "mobile": 8989898989,
+      "id": 2
+    },
+    {
+      "fullname": "Bhargavi G",
+      "email": "b@gmail.com",
+      "password": "b@1234",
+      "mobile": 9090909090,
+      "id": 3
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Read Books",
+      "completed": true,
+      "category": "personal",
+      "dueDate": "2024-01-04",
+      "userId": 1,
+      "id": 1,
+      "editing": false,
+      "editedTask": {
+        "title": "Read Books",
+        "completed": true,
+        "category": "personal",
+        "dueDate": "2024-01-04",
+        "userId": 1,
+        "id": 1,
+        "editing": true
+      }
+    },
+    {
+      "title": "prepare presentation",
+      "completed": false,
+      "category": "work",
+      "dueDate": "2024-01-05",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "title": "complete project",
+      "completed": false,
+      "category": "work",
+      "dueDate": "2024-01-05",
+      "userId": 2,
+      "id": 3
+    },
+    {
+      "title": "Go to GroceryShop",
+      "completed": true,
+      "category": "personal",
+      "dueDate": "2024-01-03",
+      "userId": 2,
+      "id": 4
+    },
+    {
+      "title": "Take Rest",
+      "completed": true,
+      "category": "Personal",
+      "dueDate": "2024-01-05",
+      "userId": 3,
+      "id": 5,
+      "editing": false,
+      "editedTask": {
+        "title": "Take Rest",
+        "completed": true,
+        "category": "personal",
+        "dueDate": "2024-01-05",
+        "userId": 3,
+        "id": 5,
+        "editing": true
+      }
+    },
+    {
+      "title": "Revision done",
+      "completed": true,
+      "category": "Study",
+      "dueDate": "2024-01-06",
+      "userId": 3,
+      "id": 6,
+      "editing": false,
+      "editedTask": {
+        "title": "Revision done",
+        "completed": true,
+        "category": "Study",
+        "dueDate": "2024-01-06",
+        "userId": 3,
+        "id": 6,
+        "editing": true
+      }
+    },
+    {
+      "id": 7,
+      "title": "shopping",
+      "completed": true,
+      "category": "Shopping",
+      "dueDate": "2024-01-03"
+    },
+    {
+      "title": "Update Status",
+      "completed": true,
+      "category": "work",
+      "dueDate": "2024-01-05",
+      "userId": 3,
+      "id": 8,
+      "editing": false,
+      "editedTask": {
+        "title": "Update Status",
+        "completed": true,
+        "category": "work",
+        "dueDate": "2024-01-05",
+        "userId": 3,
+        "id": 8,
+        "editing": true
+      }
+    }
+  ]
+}

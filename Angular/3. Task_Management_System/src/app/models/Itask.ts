@@ -12,4 +12,6 @@ export interface Task {
   completed: boolean;
   category: string;
   dueDate: Date;
+  [key: string]: any;
+  userId: number;
 }
