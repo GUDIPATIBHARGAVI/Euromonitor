@@ -12,7 +12,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<any> {
+  public login(username: string, password: string): Observable<any> {
     const payload = { username, password };
     console.log('Login Payload:', payload);
     return this.http.post<any>(`${this.apiUrl}/login`, payload).pipe(
@@ -25,18 +25,18 @@ export class AuthService {
     );
   }
 
-  logout(): Observable<any> {
+ public  logout(): Observable<any> {
     return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
       tap(() => this.clearAuthToken()),
       catchError(this.handleError<any>('logout'))
     );
   }
 
-  isLoggedIn(): boolean {
+  public isLoggedIn(): boolean {
     return !!this.getAuthToken();
   }
 
-  getUsername(): string | null {
+  public getUsername(): string | null {
     const token = this.getAuthToken();
     if (token) {
       return 'exampleUsername';
@@ -48,7 +48,7 @@ export class AuthService {
     localStorage.setItem(this.tokenKey, token);
   }
 
-  getAuthToken(): string | null {
+  public getAuthToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
 

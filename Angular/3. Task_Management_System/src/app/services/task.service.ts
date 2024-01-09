@@ -17,12 +17,12 @@ export class TaskService {
   setTaskData(data: any): void {
     this.taskDataSubject.next(data);
   }
-  getTasks(): Observable<Task[]> {
+ public  getTasks(): Observable<Task[]> {
     const url = `${this.apiUrl}/tasks`;
     return this.http.get<Task[]>(url);
   }
 
-  getTasksByCategory(category: string): Observable<Task[]> {
+  public getTasksByCategory(category: string): Observable<Task[]> {
     const url =
       category === 'All'
         ? `${this.apiUrl}/tasks`
@@ -30,16 +30,16 @@ export class TaskService {
     return this.http.get<Task[]>(url);
   }
 
-  getCategories(): Observable<string[]> {
+ public  getCategories(): Observable<string[]> {
     return of(this.categories);
   }
 
-  addTask(task: Task): Observable<Task> {
+ public  addTask(task: Task): Observable<Task> {
     const url = `${this.apiUrl}/tasks`;
     return this.http.post<Task>(url, task);
   }
 
-  updateTask(updatedTask: {
+  public updateTask(updatedTask: {
     id: number;
     title: string;
     completed: boolean;
@@ -50,7 +50,7 @@ export class TaskService {
     return this.http.put<Task>(url, updatedTask);
   }
 
-  deleteTask(taskId: number): Observable<void> {
+ public  deleteTask(taskId: number): Observable<void> {
     const url = `${this.apiUrl}/tasks/${taskId}`;
     return this.http.delete<void>(url);
   }
