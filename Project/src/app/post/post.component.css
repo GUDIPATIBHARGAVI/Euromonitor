@@ -1,0 +1,95 @@
+.fixed-image {
+  width: 100px; /* Adjust the width as needed */
+  height: 70px; /* Adjust the height as needed */
+  object-fit: cover; /* Maintain aspect ratio and cover the specified dimensions */
+}
+/* Add this CSS to your styles file or component stylesheet */
+
+/* Full-page background styling */
+body {
+  background-color: #f8f9fa; /* Adjust the background color for the entire page */
+  margin: 0;
+  font-family: "Arial", sans-serif;
+}
+
+/* Main container styling */
+.container {
+  max-width: 1300px; /* Adjust the maximum width of the container */
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+}
+
+/* Card styling */
+.card {
+  margin-bottom: 20px;
+}
+
+.bg-secondary-theme {
+  background: linear-gradient(to right, #343a40, #6c757d);
+  color: #fff;
+}
+
+.shadow-effect {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-theme-center {
+  color: #17a2b8; /* Adjust the color to match your theme */
+}
+
+/* Button styling */
+.btn-info,
+.btn-warning,
+.btn-success,
+.btn-danger {
+  color: #fff;
+}
+
+.bg-theme {
+  background-color: #17a2b8; /* Adjust the color to match your theme */
+}
+
+.btn-info:hover,
+.btn-warning:hover,
+.btn-success:hover,
+.btn-danger:hover {
+  filter: brightness(90%); /* Slightly darken the button on hover */
+}
+
+/* Table styling */
+.table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Hover effect for table rows */
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Image styling */
+.fixed-image {
+  width: 50px; /* Adjust the size of the image as needed */
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .col-md-12 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

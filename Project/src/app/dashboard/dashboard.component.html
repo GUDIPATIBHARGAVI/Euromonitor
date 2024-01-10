@@ -1,0 +1,77 @@
+<div
+  class="container-fluid position-relative"
+  style="
+    background: linear-gradient(to right, #ffb6c1, #ffd700);
+    padding-top: 50px;
+  "
+>
+  <div class="container">
+    <h1 class="text-center text-white mb-4">Dashboard</h1>
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <div class="user-info-container">
+          <p class="user-info-text">
+            <span class="info-label">Email:</span> {{ getEmail() }}
+          </p>
+          <p class="user-info-text">
+            <span class="info-label">Number:</span> {{ getNumber() }}
+          </p>
+          <p class="user-info-text">
+            <span class="info-label">Name:</span> {{ getName() }}
+          </p>
+          <p class="user-info-text">
+            <span class="info-label">Role:</span> {{ getRole() }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Your existing cards here -->
+
+      <div class="col-md-4 mb-5">
+        <div class="card shadow-effect" routerLink="/categories">
+          <div class="card-body text-center bg-secondary-theme">
+            <h1 class="mt-3 text-theme-primary">
+              <i class="fas fa-clipboard-list"></i>
+            </h1>
+            <h2 class="text-theme-primary">Category</h2>
+            <p>Manage category details here</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add or remove cards based on your needs -->
+
+      <div class="col-md-4 mb-5">
+        <div class="card shadow-effect" routerLink="/post">
+          <div class="card-body text-center bg-secondary-theme">
+            <h1 class="mt-3 text-theme-primary">
+              <i class="fas fa-file-image"></i>
+            </h1>
+            <h2 class="text-theme-primary">Post</h2>
+            <p>Manage your content here..!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-5">
+        <div class="card shadow-effect" routerLink="/content-types">
+          <div class="card-body text-center bg-secondary-theme">
+            <h1 class="mt-3 text-theme-primary">
+              <i class="fas fa-file"></i>
+            </h1>
+            <h2 class="text-theme-primary">Content-Types</h2>
+            <p>Manage your Content-Types here..!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-1">
+    <button class="btn btn-info btn-sm btn-theme" routerLink="/home">
+      Back to home
+    </button>
+  </div>
+</div>

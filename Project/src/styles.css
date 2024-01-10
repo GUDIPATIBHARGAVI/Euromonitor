@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~boostrap/dist/css/bootstrap.min.css"; */
+/* :root {
+  --primary: red;
+}
+
+p {
+  color: var(--primary);
+} */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+:root {
+  --primary-color: #026467;
+  --secondary-color: #e5f5ea;
+  --body-text-color: #596392;
+  --navbar-footer-color: #f9f9f9;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
+  color: var(--body-text-color);
+  display: contents;
+}
+/* .cms-logo {
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: #8192dc;
+} */
+.nav-link {
+  color: var(--primary-color);
+}
+.bg-theme {
+  background-color: var(--primary-color);
+}
+.bg-secondary-theme {
+  background-color: var(--secondary-color);
+}
+
+.text-theme-primary {
+  color: var(--primary-color);
+}
+
+.btn-theme {
+  height: 58px;
+  border: none;
+  font-size: 13px;
+  background-color: var(--primary-color);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

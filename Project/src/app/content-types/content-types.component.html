@@ -1,0 +1,122 @@
+<!-- content-type.component.html -->
+<div class="container">
+  <div class="row">
+    <div
+      class="col-md-10 bg-secondary-theme p-3 shadow-effect"
+      style="margin-left: 50px"
+    >
+      <h3 class="text-center text-theme-primary">New Content Types</h3>
+      <p class="text-center mb-5">You can add new Content Types from here..!</p>
+      <form
+        class="form-inline text-center"
+        #contentTypeForm="ngForm"
+        (ngSubmit)="onSubmit(contentTypeForm)"
+      >
+        <div class="form-group col-md-10">
+          <input
+            type="text"
+            name="contentType"
+            class="form-control shadow-effect"
+            id="newContentType"
+            placeholder="Add new Content Type"
+            style="width: 80%"
+            ngModel
+          />
+        </div>
+
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-block btn-info mb-2">
+            Add Content Type
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button
+            type="button"
+            class="btn btn-block btn-info mb-2"
+            routerLink="/post"
+          >
+            Back
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row mt-3">
+  <div class="col-md-5 text-right">
+    <label for="filterOption" class="col-form-label">Filter By:</label>
+  </div>
+  <div class="col-md-4">
+    <select
+      class="form-control d-inline-block"
+      id="filterOption"
+      [(ngModel)]="selectedFilterOption"
+    >
+      <option value="alphabet">Alphabet</option>
+      <option value="dateModified">Date Modified</option>
+    </select>
+  </div>
+</div>
+
+<div class="row mt-0">
+  <div class="col-md-7 mx-auto">
+    <table class="table row-border hover">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Content Type</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ... (previous code) -->
+        <tr
+          *ngFor="
+            let contentType of contentTypes
+              | contentTypeFilter : filterText : selectedFilterOption;
+            let i = index
+          "
+        >
+          <td>{{ i + 1 }}</td>
+          <td>
+            <ng-container
+              *ngIf="
+                selectedContentType && selectedContentType.id === contentType.id
+              "
+            >
+              <input
+                type="text"
+                [(ngModel)]="selectedContentType.contentType"
+                class="form-control"
+                style="width: 80%"
+              />
+            </ng-container>
+            <ng-container
+              *ngIf="
+                !(
+                  selectedContentType &&
+                  selectedContentType.id === contentType.id
+                )
+              "
+            >
+              {{ contentType.contentType }}
+            </ng-container>
+          </td>
+          <td>
+            <button class="btn btn-success" (click)="toggleEdit(contentType)">
+              Edit
+            </button>
+            <button
+              class="btn btn-danger"
+              (click)="deleteContentType(contentType)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        <!-- ... (remaining code) -->
+      </tbody>
+    </table>
+  </div>
+</div>

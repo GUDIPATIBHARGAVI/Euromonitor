@@ -1,0 +1,60 @@
+<!-- <app-category-navbar></app-category-navbar> -->
+<!-- <div
+  class="content"
+  style="width: 50%; margin-left: auto; margin-right: auto; margin-top: 180px"
+  role="main"
+>
+  <router-outlet></router-outlet>
+</div>
+<div class="container mt-5 mb-5">
+  <div class="row justify-container-center"></div>
+</div> -->
+
+<!-- <app-footer></app-footer> -->
+<!-- <app-sidenav></app-sidenav> -->
+<!-- <mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header> </app-header>
+
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container> -->
+<!-- <span> welcome</span>
+<a routerLink="">Home</a>
+<a routerLink="/user-listing">User</a>
+<div class="spacer"></div>
+<a routerLink="/login">Logout</a> 
+ style="width: 100%; display: block; margin-top: 150px"-->
+<div class="text-center mt-3">
+  <a
+    *ngIf="isAdminUser"
+    routerLink="/user-listing"
+    class="list-group-item list-group-item-action border-0 bg-secondary text-light"
+    style="max-width: 150px"
+  >
+    Users
+  </a>
+</div>
+<div class="content" role="main">
+  <router-outlet></router-outlet>
+</div>
+<!-- <a
+  *ngIf="isAdminUser"
+  routerLink="/user-listing"
+  class="list-group-item list-group-item-action border-0 bg-secondary text-light"
+>
+  Users
+</a> -->
+<!-- <div class="text-center mt-3">
+  <a
+    *ngIf="isAdminUser"
+    routerLink="/user-listing"
+    class="list-group-item list-group-item-action border-0 bg-secondary text-light"
+    style="max-width: 150px; /* Adjust the width as needed */"
+  >
+    Users
+  </a>
+</div> -->

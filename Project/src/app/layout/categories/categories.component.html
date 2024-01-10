@@ -1,0 +1,121 @@
+<!-- categories.component.html -->
+
+<div class="container">
+  <div class="row">
+    <div
+      class="col-md-10 bg-secondary-theme p-3 shadow-effect"
+      style="margin-left: 50px"
+    >
+      <h3 class="text-center text-theme-primary">New Categories</h3>
+      <p class="text-center mb-5">You can add new Categories from here..!</p>
+      <form
+        class="form-inline text-center"
+        #categoryForm="ngForm"
+        (ngSubmit)="onSubmit(categoryForm)"
+      >
+        <div class="form-group col-md-10">
+          <input
+            type="text"
+            name="category"
+            class="form-control shadow-effect"
+            id="newCategory"
+            placeholder="Add new Category"
+            style="width: 80%"
+            ngModel
+          />
+        </div>
+
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-block btn-info mb-2">
+            Add category
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button
+            type="submit"
+            class="btn btn-block btn-info mb-2"
+            routerLink="/post"
+          >
+            Back
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-md-5 text-right">
+    <label for="filterOption" class="col-form-label">Filter By:</label>
+  </div>
+  <div class="col-md-4">
+    <select
+      class="form-control d-inline-block"
+      id="filterOption"
+      [(ngModel)]="selectedFilterOption"
+    >
+      <option value="alphabet">Alphabet</option>
+      <option value="dateModified">Date Modified</option>
+    </select>
+  </div>
+</div>
+
+<div class="row mt-0">
+  <div class="col-md-7 mx-auto">
+    <!-- Use a valid number like 10 -->
+    <table class="table row-border hover">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Category</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <!-- categories.component.html -->
+
+      <!-- ... (other HTML code) -->
+
+      <!-- categories.component.html -->
+
+      <!-- ... (other HTML code) -->
+
+      <tbody>
+        <!-- Update this line -->
+        <tr
+          *ngFor="
+            let category of categories
+              | categoryFilter : filterText : selectedFilterOption;
+            let i = index
+          "
+        >
+          <td>{{ i + 1 }}</td>
+          <td>
+            <ng-container
+              *ngIf="selectedCategory && selectedCategory.id === category.id"
+            >
+              <!-- Check if selectedCategory is not null and has the same id -->
+              <input
+                type="text"
+                [(ngModel)]="selectedCategory.category"
+                class="form-control"
+                style="width: 80%"
+              />
+            </ng-container>
+            <ng-container
+              *ngIf="!(selectedCategory && selectedCategory.id === category.id)"
+            >
+              {{ category.category }}
+            </ng-container>
+          </td>
+          <td>
+            <button class="btn btn-success" (click)="toggleEdit(category)">
+              Edit
+            </button>
+            <button class="btn btn-danger" (click)="deleteCategory(category)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

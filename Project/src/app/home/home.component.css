@@ -1,0 +1,191 @@
+.fullscreen-content {
+  background-color: rgb(174, 132, 171);
+  padding: 10px;
+  max-width: 180%;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+}
+
+.fullscreen-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.fullscreen-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.close-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: #e74c3c;
+  border: none;
+  font-size: 30px;
+  color: #3a2ae4;
+  padding: 10px 15px;
+  border-radius: 50%;
+  z-index: 1001;
+}
+
+.fullscreen-content {
+  max-width: 190%;
+  max-height: 100%;
+  text-align: center;
+}
+.disable-interactions {
+  pointer-events: none;
+}
+
+.fullscreen-image {
+  width: 80%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.fullscreen-dialog {
+  background-color: #fff;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #c62f2f;
+}
+.read-more-link {
+  background: none;
+  border: none;
+  color: rgb(177, 177, 224);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+/* YourComponent.css (or in your global styles file) */
+/* Default styles for navbar links */
+.navbar-nav a {
+  text-decoration: none;
+  color: rgb(108, 45, 90);
+  padding: 10px;
+  display: block;
+  margin-right: 70px;
+}
+
+/* Change color on hover */
+.navbar-nav a:hover {
+  background-color: #e4d6d6;
+  color: #ba1515; /* Text color on hover */
+}
+
+/* Active link styles (optional, if you want to highlight the current page) */
+.navbar-nav a.active {
+  background-color: #555;
+  color: #fff;
+}
+/* Styling for CMS logo */
+.navbar-brand.cms-logo {
+  font-family: "Your Preferred Font", sans-serif; /* Replace with your preferred font */
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: #fff; /* Text color for the logo */
+}
+
+/* Change color on hover (optional) */
+.navbar-brand.cms-logo:hover {
+  color: #3b1797; /* Change to your preferred color on hover */
+}
+
+.cms-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 100px; /* Adjust the width as needed */
+  height: 80px; /* Maintain aspect ratio */
+  border-radius: 50%; /* Display the image in a circular shape */
+  border: 2px solid #fff; /* White border around the image */
+  margin-right: 10px; /* Adjust spacing between image and text */
+}
+.nav-link {
+  /* font-size: larger; */
+  font-size: x-large;
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px; /* Adjust this value to your preference for vertical and horizontal spacing */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.navbar-nav {
+  list-style: none;
+  padding: 0px;
+}
+
+.nav-item {
+  margin-right: 5px; /* Adjust this value to your preference for horizontal spacing */
+}
+/* Styling for the navbar */
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 5px; /* Adjust this value to your preference for horizontal spacing */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px; /* Adjust this value to your preference for vertical and horizontal spacing */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #f0f0f0; /* Change the background color on hover if desired */
+}
+
+/* Adjust margin between nav-links */
+.nav-link + .nav-link {
+  margin-left: 5px; /* Adjust this value to your preference for horizontal spacing between links */
+}
+
+/* Decrease the gap between all links */
+.nav-item .nav-link {
+  margin-right: 2px; /* Adjust this value to decrease the gap between all links */
+}

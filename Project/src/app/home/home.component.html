@@ -1,0 +1,340 @@
+<!-- <div class="container-fluid position-relative">
+  <button
+    class="btn btn-sm btn-info bg bg-secondary-theme text-theme-primary float-end m-3"
+    (click)="logout()"
+  >
+    Logout
+  </button>
+  <div class="bg-secondary text-light py-2">
+    <div class="container text-center">
+      <span class="cms-logo h3">CMS</span>
+    </div>
+
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="list-group d-flex flex-row align-items-center">
+            <a
+              routerLink="/dashboard"
+              class="list-group-item list-group-item-action border-0 bg-secondary text-light"
+            >
+              Dashboard
+            </a>
+            <a
+              routerLink="/about"
+              class="list-group-item list-group-item-action border-0 bg-secondary text-light"
+            >
+              About
+            </a>
+            <a
+              routerLink="/contact"
+              class="list-group-item list-group-item-action border-0 bg-secondary text-light"
+            >
+              Contact Us
+            </a>
+            <a
+              routerLink="/terms"
+              class="list-group-item list-group-item-action border-0 bg-secondary text-light"
+            >
+              Terms & Conditions
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="input-group mb-4 mt-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search content..."
+          [(ngModel)]="searchText"
+        />
+        <button class="btn btn-primary btn-sm" (click)="searchContent()">
+          Search
+        </button>
+      </div>
+    </div>
+    <button class="btn btn-secondary btn-sm mb-3" (click)="sortByDate()">
+      Sort by Date
+    </button>
+    <div class="row" [ngClass]="{ 'disable-interactions': isDetailViewOpen }">
+      <div class="col-12">
+        <div class="input-group mb-4 mt-3">
+          <label for="contentTypes" class="visually-hidden"
+            >Select Content Type</label
+          >
+          <select
+            id="contentTypes"
+            class="form-select"
+            [(ngModel)]="selectedContentType"
+            (change)="filterContentByType()"
+          >
+            <option value="" disabled>Select Content Type</option>
+            <option value="">All Content Types</option>
+            <option *ngFor="let type of contentTypes" [value]="type">
+              {{ type }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div
+            *ngFor="let content of filteredContentList; let i = index"
+            class="col-12 mb-4"
+            #contentCard
+            [ngClass]="{
+              'col-lg-6': !isDetailViewOpen,
+              fullscreen: selectedContentIndex === i
+            }"
+            (click)="toggleFullscreen(i)"
+          >
+         
+            <div class="card h-100 shadow">
+              <img
+                [src]="content.image"
+                alt="Content Image"
+                class="card-img-top"
+                style="height: 400px; object-fit: cover"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  Description: {{ content.description }}
+                </h5>
+                <p class="card-text">Author: {{ content.author }}</p>
+                <p class="card-text">Date: {{ content.date }}</p>
+                <p class="card-text" *ngIf="!showFullContent">
+                  {{ content.content.substring(0, 500) }}
+                  <span *ngIf="content.content.length > 50">
+                    ... <a href="#" (click)="toggleReadMore()">Read More</a>
+                  </span>
+                </p>
+                <p class="card-text" *ngIf="showFullContent">
+                  {{ content.content }}
+                </p>
+                <p class="card-text">
+                  Content Type: {{ content.selectedContentType }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="selectedContentIndex !== null" class="fullscreen-overlay">
+      <div class="fullscreen-dialog">
+        <div class="fullscreen-content">
+       
+          <button class="close-button" (click)="closeFullscreen()">
+            &times;
+          </button>
+          <img
+            *ngIf="selectedContent?.image"
+            [src]="selectedContent?.image"
+            alt="Content Image"
+            class="fullscreen-image"
+          />
+          <h5>{{ selectedContent?.description }}</h5>
+          <p>Author: {{ selectedContent?.author }}</p>
+          <p>Date: {{ selectedContent?.date }}</p>
+          <p>{{ selectedContent?.content }}</p>
+          <p>Content Type: {{ selectedContent?.selectedContentType }}</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- YourComponent.html -->
+
+<div
+  class="container-fluid position-relative"
+  style="background: linear-gradient(to right, #ffb6c1, #a7a929)"
+>
+  <div class="container text-center mt-0">
+    <h1 class="display-6 text-theme-primary font-weight-bold">
+      Welcome to Content Management System
+    </h1>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+    <div class="container">
+      <!-- CMS Logo -->
+
+      <span class="navbar-brand cms-logo h3">
+        <img src="assets/images/logo.png" alt="CMS Logo" class="logo-image" />
+        CMS
+      </span>
+
+      <!-- Responsive Menu Toggle Button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation Links -->
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/about" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/contact" class="nav-link">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/terms" class="nav-link">Terms & Conditions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Logout Button -->
+    <p>{{ getEmail() }}</p>
+    <hr />
+    <button class="btn btn-sm btn-info" (click)="logout()">Logout</button>
+  </nav>
+  <!-- Welcome Message -->
+
+  <!-- Search Bar -->
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-7 d-flex justify-content-end">
+        <div class="input-group mb-4 mt-3">
+          <input
+            type="text"
+            class="form-control rounded-pill py-4"
+            placeholder="Search content..."
+            [(ngModel)]="searchText"
+          />
+          <button
+            class="btn btn-secondary btn-sm rounded-pill py-2"
+            (click)="searchContent()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sort and Filter Section -->
+  <div class="container mt-3">
+    <div class="row align-items-center">
+      <div class="col-md-12 d-flex justify-content-end align-items-center mb-3">
+        <label
+          for="contentTypes"
+          class="visually-hidden fw-bold fs-7 fst-italic"
+          >Select Content Type:
+        </label>
+
+        <select
+          id="contentTypes"
+          class="form-select form-select-sm me-3"
+          [(ngModel)]="selectedContentType"
+          (change)="filterContentByType()"
+        >
+          <option value="" disabled>Select Content Type</option>
+          <option value="">All Content Types</option>
+          <option *ngFor="let type of contentTypes" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+
+        <button class="btn btn-secondary btn-sm" (click)="sortByDate()">
+          <i class="bi bi-calendar"></i> Sort by Date
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Cards -->
+  <div class="row" [ngClass]="{ 'disable-interactions': isDetailViewOpen }">
+    <div
+      *ngFor="let content of filteredContentList; let i = index"
+      class="col-12 col-lg-6 mb-4"
+      #contentCard
+      [ngClass]="{ fullscreen: selectedContentIndex === i }"
+      (click)="toggleFullscreen(i)"
+    >
+      <div class="card h-100 shadow">
+        <img
+          [src]="content.image"
+          alt="Content Image"
+          class="card-img-top"
+          style="height: 400px; object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-info">
+            Description: {{ content.description }}
+          </h5>
+          <p class="card-text">Author: {{ content.author }}</p>
+          <p class="card-text">Date: {{ content.date }}</p>
+          <div>
+            <ng-container *ngIf="!showFullContent; else fullContent">
+              <p class="card-text text-muted">
+                {{ content.content.substring(0, 150) }}
+                <span *ngIf="content.content.length > 50">
+                  ...
+                  <button
+                    class="btn btn-link read-more-link"
+                    (click)="toggleReadMore()"
+                  >
+                    Read More
+                  </button>
+                </span>
+              </p>
+            </ng-container>
+            <ng-template #fullContent>
+              <p class="card-text text-muted">{{ content.content }}</p>
+            </ng-template>
+            <!-- <p class="card-text text-info">
+              Content Type: {{ content.selectedContentType }}
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Overlay -->
+  <div *ngIf="selectedContentIndex !== null" class="fullscreen-overlay">
+    <div class="fullscreen-dialog">
+      <div class="fullscreen-content">
+        <!-- Content Details for the selected card -->
+        <button class="close-button" (click)="closeFullscreen()">
+          &times;
+        </button>
+        <img
+          *ngIf="selectedContent?.image"
+          [src]="selectedContent?.image"
+          alt="Content Image"
+          class="fullscreen-image"
+        />
+        <h5 class="text-theme-primary">{{ selectedContent?.description }}</h5>
+        <p>Author: {{ selectedContent?.author }}</p>
+        <p>Date: {{ selectedContent?.date }}</p>
+        <p>{{ selectedContent?.content }}</p>
+        <p class="text-info">
+          Content Type: {{ selectedContent?.selectedContentType }}
+        </p>
+        <!-- Include other details as needed -->
+      </div>
+    </div>
+  </div>
+</div>

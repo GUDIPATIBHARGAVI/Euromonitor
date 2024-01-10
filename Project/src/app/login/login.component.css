@@ -1,0 +1,48 @@
+/* Container for the login card */
+mat-card {
+  max-width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+mat-card-header h2 {
+  color: #2eadaf;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Form styling */
+.example-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+/* Input styling */
+mat-form-field {
+  margin-bottom: 20px;
+}
+
+/* Button styling */
+button {
+  margin-right: 10px;
+}
+
+/* Anchor (link) styling */
+a {
+  text-decoration: none;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+  mat-card {
+    margin: 20px auto;
+  }
+}

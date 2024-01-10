@@ -1,0 +1,53 @@
+/* Container for the registration card */
+mat-card {
+  max-width: 500px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+mat-card-header h1 {
+  color: #2d7ea0;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.example-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Input styling */
+mat-form-field {
+  margin-bottom: 20px;
+}
+
+/* Radio group styling */
+mat-radio-group {
+  margin-bottom: 20px;
+}
+
+/* Button styling */
+button {
+  margin-right: 10px;
+}
+
+/* Anchor (link) styling */
+a {
+  text-decoration: none;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+  mat-card {
+    margin: 20px auto;
+  }
+}
