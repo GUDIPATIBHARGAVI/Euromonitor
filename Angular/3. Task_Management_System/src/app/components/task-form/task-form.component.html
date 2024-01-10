@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Form Title</title>
+  </head>
+  <body>
+    <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+      <div>
+        <label>Title:</label>
+        <input formControlName="title" type="text" />
+      </div>
+      <div>
+        <label>Completed:</label>
+        <input formControlName="completed" type="checkbox" />
+      </div>
+      <div>
+        <label>Category:</label>
+        <input formControlName="category" type="text" />
+      </div>
+      <div>
+        <label>Due Date:</label>
+        <input formControlName="dueDate" type="date" />
+      </div>
+      <div>
+        <button type="submit">Add Task</button>
+      </div>
+      <div class="col-md-12 mt-3">
+        <button class="btn btn-secondary" (click)="redirectToDashboard()">
+          Back
+        </button>
+      </div>
+    </form>
+  </body>
+</html>

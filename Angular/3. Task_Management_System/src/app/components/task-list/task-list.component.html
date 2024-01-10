@@ -1,0 +1,102 @@
+<div class="row mt-3">
+  <div class="col-md-6 filter-section">
+    <label class="filter-label">Filter by Category:</label>
+    <select
+      class="form-control filter-select"
+      [(ngModel)]="selectedCategory"
+      (change)="filterTasksByCategory()"
+    >
+      <option value="">All Categories</option>
+      <option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-6 sort-section">
+    <label class="sort-label" for="sortDirection">Sort By Due Date:</label>
+    <select
+      id="sortDirection"
+      class="form-control sort-select"
+      [(ngModel)]="sortDirection"
+      (change)="sortTasksByDuedate()"
+    >
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <ng-container *ngIf="filteredTasks.length > 0; else noTasks">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Due Date</th>
+            <th>Category</th>
+            <th>Completion Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of filteredTasks">
+            <td>{{ task.title }}</td>
+            <td *ngIf="task.dueDate">{{ task.dueDate | date : "short" }}</td>
+            <td *ngIf="!task.dueDate">N/A</td>
+            <td>{{ task.category }}</td>
+            <td>{{ task.completed ? "Completed" : "Not Completed" }}</td>
+            <td>
+              <div class="card-footer">
+                <button class="btn btn-danger" (click)="deleteTask(task.id)">
+                  Delete
+                </button>
+                <button
+                  class="btn btn-primary"
+                  *ngIf="!task.editing"
+                  (click)="editTask(task)"
+                >
+                  Edit
+                </button>
+              </div>
+              <div *ngIf="task.editing" class="card-footer">
+                <input
+                  [(ngModel)]="task.editedTask.title"
+                  placeholder="Title"
+                />
+                <input
+                  [(ngModel)]="task.editedTask.completed"
+                  type="checkbox"
+                />
+                <input
+                  [(ngModel)]="task.editedTask.category"
+                  placeholder="Category"
+                />
+                <input [(ngModel)]="task.editedTask.dueDate" type="date" />
+                <button (click)="updateTask(task)">Save</button>
+                <button (click)="cancelEdit(task)">Cancel</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+  <ng-template #noTasks>
+    <div class="col-md-12">
+      <p class="alert alert-info">No tasks available.</p>
+    </div>
+  </ng-template>
+</div>
+<div class="col-md-12 mt-3">
+  <button class="btn btn-primary" (click)="redirectToAddTask()">
+    Add Task
+  </button>
+
+  <div class="col-md-12 mt-3">
+    <button class="btn btn-secondary" (click)="redirectToDashboard()">
+      Dashboard
+    </button>
+  </div>
+</div>
