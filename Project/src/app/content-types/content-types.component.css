@@ -1,17 +1,12 @@
-/* Add this CSS to your styles file or component stylesheet */
-
-/* Main container styling */
 .container {
   margin-top: 20px;
+  padding: 10px;
 }
-
-/* Header section styling */
 
 .shadow-effect {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Form styling */
 .text-center {
   text-align: center;
 }
@@ -25,13 +20,11 @@
   margin-bottom: 15px;
 }
 
-/* Input styling */
 .form-control {
   width: 100%;
-  background-color: #f8f9fa; /* Adjust background color for the input */
+  background-color: #f8f9fa;
 }
 
-/* Button styling */
 .btn-info,
 .btn-success,
 .btn-danger {
@@ -62,7 +55,6 @@
   background-color: #a82333;
 }
 
-/* Table styling */
 .table {
   width: 100%;
   margin-top: 20px;
@@ -82,24 +74,27 @@
   color: #fff;
 }
 
-/* Hover effect for table rows */
 .table tbody tr:hover {
   background-color: #f8f9fa;
 }
 
-/* Filter section styling */
 .row.mt-3 {
   margin-top: 3px;
 }
 
-/* Select styling */
 .form-control.d-inline-block {
   width: auto;
 }
 
-/* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .col-md-10 {
     margin-left: 0;
   }
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

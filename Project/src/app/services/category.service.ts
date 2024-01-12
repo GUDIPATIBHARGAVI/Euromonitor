@@ -7,7 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:3000/categories';
+  public apiUrl = 'http://localhost:3000/categories';
 
   constructor(private http: HttpClient) {}
 
@@ -22,7 +22,7 @@ export class CategoryService {
         map((categories) => categories.map((category) => category.category))
       );
   }
-  // category.service.ts
+
   editCategory(oldCategoryId: number, newCategory: string): Observable<any> {
     const url = `${this.apiUrl}/${oldCategoryId}`;
     const updatedCategory = { category: newCategory };

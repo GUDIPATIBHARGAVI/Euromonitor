@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContentTypeService {
-  private apiUrl = 'http://localhost:3000/content-types'; // Update the URL accordingly
+  public apiUrl = 'http://localhost:3000/content-types';
   private contentTypesSubject = new BehaviorSubject<string[]>([]);
   contentTypes$ = this.contentTypesSubject.asObservable();
 

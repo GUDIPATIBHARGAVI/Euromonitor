@@ -19,7 +19,7 @@ export class NewPostComponent {
     title: '',
     description: '',
     author: '',
-    // category: '',
+
     date: '',
     tags: '',
     selectedCategory: '',
@@ -27,23 +27,13 @@ export class NewPostComponent {
     content: '',
     image: '',
   };
-  // imageFile: File | null = null;
-  // mediaFile: File | null = null;
-  // videoFile: File | null = null;
-  //videoUrl: string | null = null;
+
   contentTypes: ContentType[] = [];
 
   categories: string[] = [];
-  // url = './assets/images/img1.jpg';
-  //url: string | ArrayBuffer = ''; // For image
-  // videoUrl: string = ''; // For video
-  //  isImageSelected: boolean = false;
-  // isVideoSelected: boolean = false;
+
   url: string | ArrayBuffer = '';
-  // videoUrl: any = null; // Use 'any' type to store blob URL
-  // isImageSelected: boolean = false;
-  // isVideoSelected: boolean = false;
-  // videoFile!: File;
+
   constructor(
     private contentService: ContentService,
     private categoryService: CategoryService,
@@ -68,12 +58,10 @@ export class NewPostComponent {
     );
   }
   loadContentTypes() {
-    // Assuming you have a method to get content types from a service
-    // Replace getContentTypeList with the actual method in your service
     this.contentTypeService.getContentTypes().subscribe(
       (contentTypes) => {
         this.contentTypes = contentTypes.map((contentType, index) => ({
-          id: index + 1, // replace this with the actual id from your server
+          id: index + 1,
           contentType: contentType,
         }));
       },
@@ -83,45 +71,6 @@ export class NewPostComponent {
     );
   }
 
-  // onFileSelected(e: Event): void {
-  //   const inputElement = e.target as HTMLInputElement;
-
-  //   if (inputElement.files && inputElement.files.length > 0) {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(inputElement.files[0]);
-  //     reader.onload = (event: any) => {
-  //       this.url = event.target.result;
-
-  //       // Update the image property in contentData
-  //       this.contentData.image = this.url;
-  //     };
-  //   }
-  // }
-  // onFileSelected(e: Event): void {
-  //   const inputElement = e.target as HTMLInputElement;
-
-  //   if (inputElement.files && inputElement.files.length > 0) {
-  //     const selectedFile = inputElement.files[0];
-  //     this.videoFile = inputElement.files[0];
-  //     this.previewVideo();
-  //     if (selectedFile) {
-  //       const reader = new FileReader();
-  //       reader.readAsDataURL(selectedFile);
-  //       reader.onload = (event: any) => {
-  //         this.url = event.target.result;
-  //       };
-  //     } else {
-  //       console.error('No file selected');
-  //     }
-  //   }
-  // }
-  // private previewVideo() {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(this.videoFile!);
-  //   reader.onload = (e: any) => {
-  //     this.videoUrl = e.target.result;
-  //   };
-  // }
   onSubmit() {
     if (this.contentForm.invalid) {
       return;
@@ -154,7 +103,6 @@ export class NewPostComponent {
       reader.onload = (event: any) => {
         this.url = event.target.result;
 
-        // Update the image property in contentData
         this.contentData.image = this.url;
       };
     }

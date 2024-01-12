@@ -1,6 +1,7 @@
 import {
   Component,
   ElementRef,
+  HostListener,
   Input,
   Pipe,
   PipeTransform,
@@ -12,27 +13,27 @@ import { Router } from '@angular/router';
 import { ContentService } from '../services/contents.service';
 import { ContentTypeService } from '../services/content-type.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  contentList: any[] = []; // Array to store content data
+  contentList: any[] = [];
   editingContent: any = null;
   searchText: string = '';
   contentTypes: string[] = [];
-
+  isNavbarOpen: boolean = window.innerWidth >= 1200;
   selectedContentIndex: number | null = null;
   isAscending: boolean = true;
-  selectedContentType: string = ''; // Property to store the selected content type
+  selectedContentType: string = '';
   isDetailViewOpen: boolean = false;
-  filteredContentList: any[] = []; // Property to store the filtered content
+  filteredContentList: any[] = [];
   selectedContent: any = null;
   @ViewChild('contentCard')
   contentCard!: ElementRef;
+  // isNavbarOpen = false;
 
   constructor(
     private authService: AuthService,
@@ -54,12 +55,14 @@ export class HomeComponent {
   ngOnInit(): void {
     this.loadContentData();
   }
-
+  toggleNavbar() {
+    this.isNavbarOpen = !this.isNavbarOpen;
+  }
   loadContentData(): void {
     this.contentService.getAllContent().subscribe(
       (contentList: any[]) => {
         this.contentList = contentList;
-        this.filteredContentList = contentList; // Initialize filtered content list
+        this.filteredContentList = contentList;
       },
       (error: any) => {
         console.error('Error fetching content data', error);
@@ -68,8 +71,6 @@ export class HomeComponent {
 
     this.contentTypeService.getContentTypes().subscribe(
       (contentTypes) => {
-        // Fetch content types from the server
-        // and then set them in the shared service
         this.contentTypeService.setContentTypes(contentTypes);
         this.contentTypes = contentTypes;
       },
@@ -82,8 +83,6 @@ export class HomeComponent {
   loadContentTypes(): void {
     this.contentTypeService.getContentTypes().subscribe(
       (contentTypes) => {
-        // Fetch content types from the server
-        // and then set them in the shared service
         this.contentTypeService.setContentTypes(contentTypes);
         this.contentTypes = contentTypes;
       },
@@ -107,19 +106,10 @@ export class HomeComponent {
     console.log('Filtered Content List:', this.filteredContentList);
   }
 
-  // searchContent() {
-  //   // Implement your search logic here
-  //   // For example, filter contentList based on searchText
-  //   this.contentList = this.contentList.filter((content) =>
-  //     content.description.toLowerCase().includes(this.searchText.toLowerCase())
-  //   );
-  // }
   searchContent() {
-    // Reset filtered content list to the original content list
     this.filteredContentList = this.contentList;
 
     if (this.searchText.trim() !== '') {
-      // If search text is not empty, filter the content list
       this.filteredContentList = this.contentList.filter(
         (content) =>
           content.description
@@ -128,7 +118,6 @@ export class HomeComponent {
           content.content.toLowerCase().includes(this.searchText.toLowerCase())
       );
 
-      // Focus on the first matching content card
       if (this.filteredContentList.length > 0 && this.contentCard) {
         this.contentCard.nativeElement.scrollIntoView({ behavior: 'smooth' });
       }
@@ -136,9 +125,9 @@ export class HomeComponent {
   }
 
   openContentDetailModal(content: any): void {
-    this.selectedContent = content; // Set the selected content
+    this.selectedContent = content;
     this.dialog.open(HomeComponent, {
-      width: '80%', // Adjust the width as needed
+      width: '80%',
       data: this.selectedContent,
     });
   }
@@ -150,11 +139,9 @@ export class HomeComponent {
   }
 
   toggleFullscreen(index: number): void {
-    // Toggle the selectedContentIndex
     this.selectedContentIndex =
       this.selectedContentIndex === index ? null : index;
 
-    // Set the selectedContent based on the index
     this.selectedContent =
       this.selectedContentIndex !== null
         ? this.filteredContentList[this.selectedContentIndex]
@@ -171,21 +158,29 @@ export class HomeComponent {
     this.showFullContent = !this.showFullContent;
   }
   sortByDate(): void {
-    // Toggle the sorting order
     this.filteredContentList = this.filteredContentList.sort((a, b) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();
       return this.isAscending ? dateA - dateB : dateB - dateA;
     });
 
-    // Toggle the sorting order for the next click
     this.isAscending = !this.isAscending;
   }
   content = {
     content: 'Your content goes here...',
     selectedContentType: 'Your content type',
   };
-  getEmail() {
-    return sessionStorage.getItem('email');
+  getUserName() {
+    return sessionStorage.getItem('username');
+  }
+  isUserAdmin(): boolean {
+    const userrole = sessionStorage.getItem('userrole');
+    const username = sessionStorage.getItem('username');
+
+    return userrole === 'admin' && username === 'admin';
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isNavbarOpen = window.innerWidth >= 1200;
   }
 }

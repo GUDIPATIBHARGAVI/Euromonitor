@@ -13,9 +13,9 @@ import { ContentType } from 'src/app/models/content-type.model';
 export class EditContentComponent implements OnInit {
   contentData: any;
   url: string = '';
-  categories: string[] = []; // Declare categories property
+  categories: string[] = [];
   @ViewChild('contentForm')
-  contentForm!: NgForm; // Use ViewChild to get reference to NgForm
+  contentForm!: NgForm;
   contentTypes: ContentType[] = [];
 
   constructor(
@@ -37,7 +37,7 @@ export class EditContentComponent implements OnInit {
             this.router.navigate(['/post']);
           } else {
             this.contentData = content;
-            this.url = content.image as string; // Explicitly cast to string
+            this.url = content.image as string;
           }
         },
         (error) => {
@@ -99,12 +99,10 @@ export class EditContentComponent implements OnInit {
     }
   }
   loadContentTypes() {
-    // Assuming you have a method to get content types from a service
-    // Replace getContentTypeList with the actual method in your service
     this.contentTypeService.getContentTypes().subscribe(
       (contentTypes) => {
         this.contentTypes = contentTypes.map((contentType, index) => ({
-          id: index + 1, // replace this with the actual id from your server
+          id: index + 1,
           contentType: contentType,
         }));
       },

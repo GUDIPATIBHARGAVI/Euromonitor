@@ -26,15 +26,14 @@ export class ContentTypesComponent implements OnInit {
     this.filterText = '';
     this.contentTypeService.addContentType(contentTypeData).subscribe(() => {
       console.log('Content type added successfully');
-      // Reset the form after submission
+
       contentTypeForm.reset();
-      this.loadContentTypes(); // Reload content types after adding a new one
+      this.loadContentTypes();
     });
   }
 
   loadContentTypes(): void {
     this.contentTypeService.getContentTypes().subscribe((contentTypes) => {
-      // Map the content types to objects with an id property
       this.contentTypes = contentTypes.map((contentType, index) => ({
         id: index + 1,
         contentType,
@@ -66,7 +65,7 @@ export class ContentTypesComponent implements OnInit {
         return contentTypes.sort((a, b) =>
           a.contentType.localeCompare(b.contentType)
         );
-      // Add other sorting cases if needed
+
       default:
         return contentTypes;
     }
@@ -77,12 +76,10 @@ export class ContentTypesComponent implements OnInit {
       this.selectedContentType &&
       this.selectedContentType.id === contentType.id
     ) {
-      // Save changes
       this.editContentType(contentType, this.selectedContentType.contentType);
-      this.selectedContentType = undefined; // Clear selectedContentType after saving
+      this.selectedContentType = undefined;
     } else {
-      // Start editing
-      this.selectedContentType = { ...contentType }; // Create a copy to avoid two-way binding issues
+      this.selectedContentType = { ...contentType };
     }
   }
   editContentType(contentType: ContentType, newContentType: string): void {
@@ -90,25 +87,20 @@ export class ContentTypesComponent implements OnInit {
       .editContentType(contentType.id, newContentType)
       .subscribe(() => {
         console.log('Content type updated successfully');
-        this.loadContentTypes(); // Reload content types after editing
+        this.loadContentTypes();
       });
   }
   deleteContentType(contentType: ContentType): void {
     console.log('Deleting content type:', contentType);
 
-    // Get the content type ID from the array
-    const contentTypeId = this.contentTypes.find(
-      (ct) => ct.contentType === contentType.contentType
-    )?.id;
-
-    if (!contentTypeId) {
+    if (contentType.id === undefined) {
       console.error('Content type ID not found for:', contentType);
       return;
     }
 
-    this.contentTypeService.deleteContentType(contentTypeId).subscribe(() => {
+    this.contentTypeService.deleteContentType(contentType.id).subscribe(() => {
       console.log('Content type deleted successfully');
-      this.loadContentTypes(); // Reload content types after deleting
+      this.loadContentTypes();
     });
   }
 }

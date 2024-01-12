@@ -1,0 +1,42 @@
+.user-listing-card {
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #683f7c;
+}
+
+.mat-paginator {
+  margin-top: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn-theme {
+  background-color: #966491;
+  color: #fff;
+  border: 1px solid #007bff;
+}
+
+.btn-theme:hover {
+  background-color: #0056b3;
+  border: 1px solid #0056b3;
+}

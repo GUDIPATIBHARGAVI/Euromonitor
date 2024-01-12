@@ -9,17 +9,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class DashboardComponent {
   constructor(private authService: AuthService, private router: Router) {}
-
-  getEmail() {
-    return sessionStorage.getItem('email');
-  }
-  getNumber() {
-    return sessionStorage.getItem('number');
-  }
-  getName() {
-    return sessionStorage.getItem('username');
-  }
-  getRole() {
-    return sessionStorage.getItem('userrole');
+  redirectToHome(): void {
+    this.router.navigateByUrl('/home');
   }
 }

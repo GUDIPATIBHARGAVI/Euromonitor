@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutComponent } from './layout/layout.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
 
 import { PagesComponent } from './pages/pages.component';
 
@@ -13,7 +10,7 @@ import { TermsComponent } from './pages/terms/terms.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CategoriesComponent } from './layout/categories/categories.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { PostComponent } from './post/post.component';
 import { NewPostComponent } from './post/new-post/new-post.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
@@ -36,18 +33,16 @@ import { UserListingComponent } from './user-listing/user-listing.component';
 import { UpdatepopupComponent } from './updatepopup/updatepopup.component';
 import { HomeComponent } from './home/home.component';
 
-import { CategoryFilterPipe } from './category-filter.pipe';
+import { CategoryFilterPipe } from './pipes/category-filter.pipe';
 
-import { ContentTypeFilterPipe } from './content-type-filter.pipe';
+import { ContentTypeFilterPipe } from './pipes/content-type-filter.pipe';
 import { ContentTypesComponent } from './content-types/content-types.component';
-import { ModalComponent } from './modal/modal.component';
-import { SortDatePipe } from './sort-date.pipe';
+
+import { SortDatePipe } from './pipes/sort-date.pipe';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
-    HeaderComponent,
-    FooterComponent,
 
     PagesComponent,
     HomeComponent,
@@ -70,8 +65,9 @@ import { SortDatePipe } from './sort-date.pipe';
 
     ContentTypeFilterPipe,
     ContentTypesComponent,
-    ModalComponent,
+
     SortDatePipe,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

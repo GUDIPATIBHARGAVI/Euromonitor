@@ -1,9 +1,8 @@
-<!-- content-type.component.html -->
 <div class="container">
   <div class="row">
     <div
       class="col-md-10 bg-secondary-theme p-3 shadow-effect"
-      style="margin-left: 50px"
+      style="margin-left: 100px"
     >
       <h3 class="text-center text-theme-primary">New Content Types</h3>
       <p class="text-center mb-5">You can add new Content Types from here..!</p>
@@ -33,7 +32,7 @@
           <button
             type="button"
             class="btn btn-block btn-info mb-2"
-            routerLink="/post"
+            routerLink="/dashboard"
           >
             Back
           </button>
@@ -70,7 +69,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- ... (previous code) -->
         <tr
           *ngFor="
             let contentType of contentTypes
@@ -105,17 +103,16 @@
           </td>
           <td>
             <button class="btn btn-success" (click)="toggleEdit(contentType)">
-              Edit
+              <i class="fas fa-pencil-alt"></i>
             </button>
             <button
               class="btn btn-danger"
               (click)="deleteContentType(contentType)"
             >
-              Delete
+              <i class="fas fa-trash-alt"></i>
             </button>
           </td>
         </tr>
-        <!-- ... (remaining code) -->
       </tbody>
     </table>
   </div>

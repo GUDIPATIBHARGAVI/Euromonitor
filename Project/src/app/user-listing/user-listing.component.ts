@@ -31,14 +31,12 @@ export class UserListingComponent implements AfterViewInit {
     this.service.Getall().subscribe((res) => {
       this.userlist = res;
 
-      // Sort users by registration date in descending order
       this.userlist.sort((a: any, b: any) => {
         const dateA = new Date(a.registrationDate).getTime();
         const dateB = new Date(b.registrationDate).getTime();
         return dateB - dateA;
       });
 
-      // Reverse the order to display the most recent user at the top
       this.userlist.reverse();
 
       this.dataSource = new MatTableDataSource(this.userlist);

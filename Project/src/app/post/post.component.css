@@ -1,25 +1,21 @@
 .fixed-image {
-  width: 100px; /* Adjust the width as needed */
-  height: 70px; /* Adjust the height as needed */
-  object-fit: cover; /* Maintain aspect ratio and cover the specified dimensions */
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
 }
-/* Add this CSS to your styles file or component stylesheet */
 
-/* Full-page background styling */
 body {
-  background-color: #f8f9fa; /* Adjust the background color for the entire page */
+  background-color: #f8f9fa;
   margin: 0;
   font-family: "Arial", sans-serif;
 }
 
-/* Main container styling */
 .container {
-  max-width: 1300px; /* Adjust the maximum width of the container */
-  margin: 0 auto; /* Center the container */
+  max-width: 1300px;
+  margin: 0 auto;
   padding: 20px;
 }
 
-/* Card styling */
 .card {
   margin-bottom: 20px;
 }
@@ -38,10 +34,9 @@ body {
 }
 
 .text-theme-center {
-  color: #17a2b8; /* Adjust the color to match your theme */
+  color: #17a2b8;
 }
 
-/* Button styling */
 .btn-info,
 .btn-warning,
 .btn-success,
@@ -50,17 +45,16 @@ body {
 }
 
 .bg-theme {
-  background-color: #17a2b8; /* Adjust the color to match your theme */
+  background-color: #17a2b8;
 }
 
 .btn-info:hover,
 .btn-warning:hover,
 .btn-success:hover,
 .btn-danger:hover {
-  filter: brightness(90%); /* Slightly darken the button on hover */
+  filter: brightness(90%);
 }
 
-/* Table styling */
 .table {
   width: 100%;
   margin-top: 20px;
@@ -73,20 +67,17 @@ body {
   text-align: center;
 }
 
-/* Hover effect for table rows */
 .table tbody tr:hover {
   background-color: #f8f9fa;
 }
 
-/* Image styling */
 .fixed-image {
-  width: 50px; /* Adjust the size of the image as needed */
+  width: 50px;
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
 }
 
-/* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .col-md-12 {
     margin-left: 0;

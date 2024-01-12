@@ -1,0 +1,57 @@
+.container {
+  max-width: 1000px;
+  height: 300px;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+
+  color: #495057;
+  background: linear-gradient(to right, #98b6cf, #00f2fe);
+}
+
+.welcome-section {
+  margin-bottom: 20px;
+}
+
+.text-primary {
+  color: #142639;
+}
+
+.user-details {
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.user-detail {
+  margin-bottom: 10px;
+}
+
+strong {
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+span {
+  font-size: 1.1em;
+}
+.center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+}
+
+.custom-button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #718ead;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-color: #0056b3;
+}

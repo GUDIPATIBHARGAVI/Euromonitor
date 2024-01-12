@@ -41,7 +41,6 @@
       </p>
 
       <div class="row mt-4">
-        <!-- Staff Member 1 -->
         <div class="col-md-4 mb-4">
           <div class="card">
             <img
@@ -58,7 +57,6 @@
           </div>
         </div>
 
-        <!-- Staff Member 2 -->
         <div class="col-md-4 mb-4">
           <div class="card">
             <img
@@ -92,10 +90,9 @@
         </div>
       </div>
       <p class="text-info fs-5">
-        <strong routerLink="/contact">Contact Us:</strong> Have questions,
-        suggestions, or need assistance? Don't hesitate to reach out to our
-        support team. We value your feedback and are committed to continuously
-        improving our platform.
+        Contact us: Have questions, suggestions, or need assistance? Don't
+        hesitate to reach out to our support team. We value your feedback and
+        are committed to continuously improving our platform.
       </p>
 
       <p class="text-info fs-5">
@@ -105,7 +102,10 @@
       </p>
 
       <div class="text-center">
-        <button class="btn btn-info btn-sm mt-4 btn-theme" routerLink="/home">
+        <button
+          class="btn btn-info btn-sm mt-4 btn-theme"
+          (click)="navigateToHome()"
+        >
           Back to Home
         </button>
       </div>

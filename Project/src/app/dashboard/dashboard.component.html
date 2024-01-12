@@ -2,33 +2,13 @@
   class="container-fluid position-relative"
   style="
     background: linear-gradient(to right, #ffb6c1, #ffd700);
-    padding-top: 50px;
+    padding-top: 100px;
   "
 >
   <div class="container">
-    <h1 class="text-center text-white mb-4">Dashboard</h1>
-    <div class="row">
-      <div class="col-md-12 mb-3">
-        <div class="user-info-container">
-          <p class="user-info-text">
-            <span class="info-label">Email:</span> {{ getEmail() }}
-          </p>
-          <p class="user-info-text">
-            <span class="info-label">Number:</span> {{ getNumber() }}
-          </p>
-          <p class="user-info-text">
-            <span class="info-label">Name:</span> {{ getName() }}
-          </p>
-          <p class="user-info-text">
-            <span class="info-label">Role:</span> {{ getRole() }}
-          </p>
-        </div>
-      </div>
-    </div>
+    <h1 class="text-center text-white mb-5">Dashboard</h1>
 
     <div class="row">
-      <!-- Your existing cards here -->
-
       <div class="col-md-4 mb-5">
         <div class="card shadow-effect" routerLink="/categories">
           <div class="card-body text-center bg-secondary-theme">
@@ -40,8 +20,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Add or remove cards based on your needs -->
 
       <div class="col-md-4 mb-5">
         <div class="card shadow-effect" routerLink="/post">
@@ -70,7 +48,7 @@
   </div>
 
   <div class="text-center mt-1">
-    <button class="btn btn-info btn-sm btn-theme" routerLink="/home">
+    <button class="btn btn-info btn-sm btn-theme" (click)="redirectToHome()">
       Back to home
     </button>
   </div>

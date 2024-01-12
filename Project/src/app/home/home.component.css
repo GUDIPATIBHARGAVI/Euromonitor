@@ -93,8 +93,7 @@
   padding: 0;
   margin: 0;
 }
-/* YourComponent.css (or in your global styles file) */
-/* Default styles for navbar links */
+
 .navbar-nav a {
   text-decoration: none;
   color: rgb(108, 45, 90);
@@ -103,28 +102,25 @@
   margin-right: 70px;
 }
 
-/* Change color on hover */
 .navbar-nav a:hover {
   background-color: #e4d6d6;
-  color: #ba1515; /* Text color on hover */
+  color: #ba1515;
 }
 
-/* Active link styles (optional, if you want to highlight the current page) */
 .navbar-nav a.active {
   background-color: #555;
   color: #fff;
 }
-/* Styling for CMS logo */
+
 .navbar-brand.cms-logo {
-  font-family: "Your Preferred Font", sans-serif; /* Replace with your preferred font */
-  font-size: 24px; /* Adjust the font size as needed */
+  font-family: "Your Preferred Font", sans-serif;
+  font-size: 24px;
   font-weight: bold;
-  color: #fff; /* Text color for the logo */
+  color: #fff;
 }
 
-/* Change color on hover (optional) */
 .navbar-brand.cms-logo:hover {
-  color: #3b1797; /* Change to your preferred color on hover */
+  color: #3b1797;
 }
 
 .cms-logo {
@@ -133,18 +129,17 @@
 }
 
 .logo-image {
-  width: 100px; /* Adjust the width as needed */
-  height: 80px; /* Maintain aspect ratio */
-  border-radius: 50%; /* Display the image in a circular shape */
-  border: 2px solid #fff; /* White border around the image */
-  margin-right: 10px; /* Adjust spacing between image and text */
+  width: 100px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-right: 10px;
 }
 .nav-link {
-  /* font-size: larger; */
   font-size: x-large;
   text-decoration: none;
   color: #333;
-  padding: 5px 10px; /* Adjust this value to your preference for vertical and horizontal spacing */
+  padding: 5px 10px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -155,9 +150,9 @@
 }
 
 .nav-item {
-  margin-right: 5px; /* Adjust this value to your preference for horizontal spacing */
+  margin-right: 5px;
 }
-/* Styling for the navbar */
+
 .navbar-nav {
   list-style: none;
   padding: 0;
@@ -165,27 +160,77 @@
 }
 
 .nav-item {
-  margin-right: 5px; /* Adjust this value to your preference for horizontal spacing */
+  margin-right: 5px;
 }
 
 .nav-link {
   text-decoration: none;
   color: #333;
-  padding: 5px 10px; /* Adjust this value to your preference for vertical and horizontal spacing */
+  padding: 5px 10px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
 .nav-link:hover {
-  background-color: #f0f0f0; /* Change the background color on hover if desired */
+  background-color: #f0f0f0;
 }
 
-/* Adjust margin between nav-links */
 .nav-link + .nav-link {
-  margin-left: 5px; /* Adjust this value to your preference for horizontal spacing between links */
+  margin-left: 5px;
 }
 
-/* Decrease the gap between all links */
 .nav-item .nav-link {
-  margin-right: 2px; /* Adjust this value to decrease the gap between all links */
+  margin-right: 2px;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+  }
+
+  &::before {
+    transform: translateY(-8px);
+  }
+
+  &::after {
+    transform: translateY(8px);
+  }
+}
+
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+  background-color: #ccc;
+}
+
+.navbar-links {
+  display: none;
+}
+
+.navbar-links.show-links {
+  display: flex;
 }

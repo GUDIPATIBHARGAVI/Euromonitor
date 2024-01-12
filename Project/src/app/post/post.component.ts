@@ -7,14 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
-  contentList: any[] = []; // Array to store content data
+  contentList: any[] = [];
   editingContent: any = null;
 
   contentData: any = {
     title: '',
     description: '',
     author: '',
-    // category: '',
+
     date: '',
     tags: '',
     selectedCategory: '',
@@ -23,16 +23,12 @@ export class PostComponent implements OnInit {
   imageFile: File | null = null;
 
   url: string | ArrayBuffer = '';
-  // videoUrl: any = null; // Use 'any' type to store blob URL
 
-  // videoFile: File | null = null;
-  // Add this line to your component class
   content: any[] = [];
   constructor(private contentService: ContentService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadContentData();
-    // this.content = this.contentService.getUploadedMedia();
   }
 
   loadContentData() {
@@ -45,32 +41,6 @@ export class PostComponent implements OnInit {
       }
     );
   }
-  // editContent(content: any) {
-  //   this.editingContent = { ...content };
-  // }
-
-  // cancelEdit() {
-  //   this.editingContent = null;
-  // }
-
-  // saveContent() {
-  //   if (!this.editingContent) {
-  //     return;
-  //   }
-
-  //   this.contentService.updateContent(this.editingContent).subscribe(
-  //     () => {
-  //       console.log('Content updated successfully.');
-
-  //       this.loadContentData();
-
-  //       this.editingContent = null;
-  //     },
-  //     (error: any) => {
-  //       console.error('Error updating content', error);
-  //     }
-  //   );
-  // }
 
   deleteContent(contentId: number) {
     this.contentService.deleteContent(contentId).subscribe(
@@ -84,23 +54,4 @@ export class PostComponent implements OnInit {
       }
     );
   }
-
-  //   isImage(mediaUrl: string): boolean {
-  //     return mediaUrl.startsWith('data:img');
-  //   }
-
-  //   isVideo(mediaUrl: string): boolean {
-  //     return mediaUrl.startsWith('data:video');
-  //   }
-  // }
-  // isImage(url: string): boolean {
-  //   return (
-  //     !!url &&
-  //     (url.toLowerCase().endsWith('.png') || url.toLowerCase().endsWith('.jpg'))
-  //   ); // Add more supported image formats as needed
-  // }
-
-  // isVideo(videoFile: string): boolean {
-  //   return !!videoFile && videoFile.toLowerCase().endsWith('.mp4'); // Adjust based on supported video formats
-  // }
 }

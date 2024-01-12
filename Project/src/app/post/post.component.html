@@ -1,4 +1,7 @@
-<div class="container">
+<div
+  class="container"
+  style="background: linear-gradient(to right, #ffb6c1, #ffd700)"
+>
   <div class="row">
     <div class="col-md-12">
       <div class="card shadow-effect bg-secondary-theme">
@@ -47,38 +50,21 @@
                     class="fixed-image"
                   />
                 </td>
-                <!-- post.component.html -->
-                <!-- <td>
-                  <ng-container *ngIf="isImage(content.image)">
-                    <img
-                      [src]="content.image"
-                      alt="Content Image"
-                      class="fixed-image"
-                    />
-                  </ng-container>
-                  <ng-container *ngIf="isVideo(content.videoFile)">
-                    <video controls width="100" height="100">
-                      <source [src]="content.videoFile" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </ng-container>
-                </td> -->
 
                 <td>{{ content.date }}</td>
                 <td>
-                  <!-- content-list.component.html -->
                   <button
-                    class="btn btn-success ml-3"
+                    class="btn btn-success ml-2"
                     [routerLink]="['/edit-content', content.id]"
                   >
-                    Edit
+                    <i class="fas fa-pencil-alt"></i>
                   </button>
 
                   <button
                     class="btn btn-danger ml-2"
                     (click)="deleteContent(content.id)"
                   >
-                    Delete
+                    <i class="fas fa-trash-alt"></i>
                   </button>
                 </td>
 

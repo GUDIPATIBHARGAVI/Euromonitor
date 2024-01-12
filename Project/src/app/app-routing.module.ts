@@ -5,7 +5,7 @@ import { TermsComponent } from './pages/terms/terms.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CategoriesComponent } from './layout/categories/categories.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { PostComponent } from './post/post.component';
 import { NewPostComponent } from './post/new-post/new-post.component';
 import { EditContentComponent } from './post/edit-content/edit-content.component';
@@ -16,10 +16,10 @@ import { AuthGuard } from './guard/auth.guard';
 import { HomeComponent } from './home/home.component';
 
 import { ContentTypesComponent } from './content-types/content-types.component';
+import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
-  //{ path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  //{ path: 'category', component: SingleCategoryComponent },
+
   { path: 'categories', component: CategoriesComponent },
   { path: 'about', component: AboutComponent },
   { path: 'terms', component: TermsComponent },
@@ -41,7 +41,9 @@ const routes: Routes = [
     path: 'user-listing',
     component: UserListingComponent,
   },
+  { path: 'profile', component: ProfileComponent },
 
+  { path: '* *', component: LoginComponent },
   { path: '', component: LoginComponent },
 ];
 

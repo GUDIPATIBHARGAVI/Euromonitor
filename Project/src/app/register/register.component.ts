@@ -45,7 +45,7 @@ export class RegisterComponent {
     ],
     number: [
       '',
-      [Validators.required, Validators.maxLength(10)],
+      [Validators.required, Validators.maxLength(10), Validators.minLength(10)],
       [this.uniqueValueValidator('number')],
     ],
     gender: ['male'],
@@ -65,7 +65,7 @@ export class RegisterComponent {
         },
         (error) => {
           console.error('Error registering user:', error);
-          this.toastr.error('Error during registration. Please try again.');
+          this.toastr.error('username already exists, choose another Username');
         }
       );
     } else {
@@ -111,6 +111,7 @@ export class RegisterComponent {
     const passwordControl = this.registerform.get('password');
     const emailControl = this.registerform.get('email');
     const numberControl = this.registerform.get('number');
+    const nameControl = this.registerform.get('id');
 
     if (passwordControl && passwordControl.hasError('pattern')) {
       this.toastr.warning(
@@ -126,12 +127,16 @@ export class RegisterComponent {
     if (
       numberControl &&
       (numberControl.hasError('required') ||
-        numberControl.hasError('maxlength'))
+        numberControl.hasError('maxlength') ||
+        numberControl?.hasError('minlength'))
     ) {
       this.toastr.warning(
         'Enter a valid 10-digit mobile number.',
         'Mobile Number Validation'
       );
+    }
+    if (nameControl && nameControl.hasError('minlength')) {
+      this.toastr.warning('Enter Username with atleast 5 characters');
     }
   }
 }

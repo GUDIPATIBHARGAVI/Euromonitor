@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <div class="welcome-section text-center">
+    <h1 class="display-4">
+      Welcome, <span class="text-light">{{ getUserName() }}</span
+      >!
+    </h1>
+  </div>
+
+  <div class="user-details mt-4">
+    <div class="user-detail">
+      <strong>Name:</strong>
+      <span>{{ getUserName() }}</span>
+    </div>
+    <div class="user-detail">
+      <strong>Role:</strong>
+      <span>{{ getUserRole() }}</span>
+    </div>
+    <div class="user-detail">
+      <strong>Contact Number:</strong>
+      <span>{{ getUserNumber() }}</span>
+    </div>
+    <div class="user-detail">
+      <strong>Email:</strong>
+      <span>{{ getUserEmail() }}</span>
+    </div>
+  </div>
+</div>
+<div class="center-container">
+  <button (click)="navigateToHome()" class="custom-button">Home</button>
+</div>

@@ -1,4 +1,7 @@
-<div class="container">
+<div
+  class="container"
+  style="background: linear-gradient(to right, #ffb6c1, #9e976c)"
+>
   <div class="row">
     <div class="col-md-12 text-center">
       <h3 class="text-theme-primary">Add New Content</h3>
@@ -9,7 +12,10 @@
     <div class="row">
       <div class="col-md-7">
         <div class="card shadow-effect">
-          <div class="card-body">
+          <div
+            class="card-body"
+            style="background: linear-gradient(to right, #ffb6c1, #9e976c)"
+          >
             <div class="form-group">
               <label>Title</label>
               <input
@@ -38,15 +44,7 @@
                 name="author"
               />
             </div>
-            <!-- <div class="form-group">
-              <label>Category</label>
-              <input
-                type="text"
-                class="form-control"
-                [(ngModel)]="contentData.category"
-                name="category"
-              />
-            </div> -->
+
             <div class="form-group">
               <label>Date</label>
               <input
@@ -56,9 +54,7 @@
                 name="date"
               />
             </div>
-            <!-- ... other HTML code ... -->
-            <!-- ... other HTML code ... -->
-            <!-- Content Type Dropdown -->
+
             <div class="form-group">
               <label>Please select content Type</label>
               <select
@@ -75,22 +71,13 @@
                 </option>
               </select>
             </div>
-
-            <!-- ... other HTML code ... -->
-
-            <!-- <div class="form-group">
-              <label>Tags</label>
-              <input
-                type="text"
-                class="form-control"
-                [(ngModel)]="contentData.tags"
-                name="tags"
-              />
-            </div> -->
           </div>
         </div>
       </div>
-      <div class="col-md-5">
+      <div
+        class="col-md-5"
+        style="background: linear-gradient(to right, #ffb6c1, #9e976c)"
+      >
         <div class="form-group">
           <label>Please select content Category</label>
           <select
@@ -114,39 +101,15 @@
             (change)="onFileSelected($event)"
           />
         </div>
-        <!--<div>
-          <input
-            type="file"
-            accept="video/*"
-            (change)="onFileSelected($event)"
-          />
-        </div>
-        <div *ngIf="videoUrl">
-          <video controls width="200" height="200">
-            <source [src]="videoUrl" type="video/mp4" />
-          </video>
-        </div>
-      </div> -->
-        <!-- <div class="form-group">
-          <label>Post Image or Video</label>
-          <img *ngIf="isImageSelected" [src]="url" height="50" /><br />
-          <video *ngIf="isVideoSelected" controls width="300" height="300">
-            <source [src]="videoUrl" type="video/mp4" />
-            Your browser does not support the video tag.</video
-          ><br />
-          <input
-            type="file"
-            class="form-control"
-            accept="image/*, video/*"
-            (change)="onFileSelected($event)"
-          />
-        </div> -->
       </div>
     </div>
     <div class="row mt-3 mb-5">
       <div class="col-md-12">
         <div class="card shadow-effect">
-          <div class="card-body">
+          <div
+            class="card-body"
+            style="background: linear-gradient(to right, #ffb6c1, #9e976c)"
+          >
             <div class="form-group">
               <label>Content</label>
               <angular-editor
