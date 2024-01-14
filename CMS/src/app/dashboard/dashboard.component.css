@@ -1,0 +1,19 @@
+.card {
+  height: 300px;
+  cursor: pointer;
+}
+.user-info-container {
+  background-color: #3c7375;
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.user-info-text {
+  color: #fff;
+  margin: 5px 0;
+}
+.info-label {
+  font-weight: bold;
+  margin-right: 5px;
+}

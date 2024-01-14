@@ -1,0 +1,138 @@
+<div
+  class="container"
+  style="background: linear-gradient(to right, #ffb6c1, #9e976c)"
+>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="text-theme-primary">Add New Content</h3>
+      <p class="mb-5">You can add content here</p>
+    </div>
+  </div>
+  <form #contentForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="card shadow-effect">
+          <div
+            class="card-body"
+            style="background: linear-gradient(to right, #ffb6c1, #9e976c)"
+          >
+            <div class="form-group">
+              <label>Title</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="contentData.title"
+                name="title"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="contentData.description"
+                name="description"
+              />
+            </div>
+            <div class="form-group">
+              <label>Author</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="contentData.author"
+                name="author"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Date</label>
+              <input
+                type="date"
+                class="form-control"
+                [(ngModel)]="contentData.date"
+                name="date"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Please select content Type</label>
+              <select
+                class="form-control"
+                [(ngModel)]="contentData.selectedContentType.contentType"
+                name="selectedContentType"
+              >
+                <option value="" disabled>Please select content type</option>
+                <option
+                  *ngFor="let contentType of contentTypes"
+                  [value]="contentType.contentType"
+                >
+                  {{ contentType.contentType }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-5"
+        style="background: linear-gradient(to right, #ffb6c1, #9e976c)"
+      >
+        <div class="form-group">
+          <label>Please select content Category</label>
+          <select
+            class="form-control"
+            [(ngModel)]="contentData.selectedCategory"
+            name="selectedCategory"
+          >
+            <option value="" disabled>Please select category</option>
+            <option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Post Image</label>
+          <img [src]="url" height="50" /><br />
+          <input
+            type="file"
+            class="form-control"
+            (change)="onFileSelected($event)"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3 mb-5">
+      <div class="col-md-12">
+        <div class="card shadow-effect">
+          <div
+            class="card-body"
+            style="background: linear-gradient(to right, #ffb6c1, #9e976c)"
+          >
+            <div class="form-group">
+              <label>Content</label>
+              <angular-editor
+                placeholder="Add your content here"
+                [(ngModel)]="contentData.content"
+                name="content"
+              ></angular-editor>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 text-center mb-5">
+        <button
+          type="submit"
+          class="btn btn-info bg-theme"
+          [disabled]="contentForm.invalid"
+        >
+          Save content
+        </button>
+        <button class="btn btn-warning bg-theme ml-3" routerLink="/post">
+          Back to post
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
