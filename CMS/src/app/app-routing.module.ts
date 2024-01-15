@@ -14,13 +14,18 @@ import { LoginComponent } from './login/login.component';
 import { UserListingComponent } from './user-listing/user-listing.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HomeComponent } from './home/home.component';
-
 import { ContentTypesComponent } from './content-types/content-types.component';
+
 import { ProfileComponent } from './profile/profile.component';
+import { homedir } from 'os';
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 
-  { path: 'categories', component: CategoriesComponent },
+  {
+    path: 'categories',
+    component: CategoriesComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'about', component: AboutComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'contact', component: ContactComponent },
@@ -30,20 +35,29 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'post', component: PostComponent, canActivate: [AuthGuard] },
-  { path: 'new-post', component: NewPostComponent },
-  { path: 'edit-content/:id', component: EditContentComponent },
+  { path: 'new-post', component: NewPostComponent, canActivate: [AuthGuard] },
+  {
+    path: 'edit-content/:id',
+    component: EditContentComponent,
+    canActivate: [AuthGuard],
+  },
 
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'content-types', component: ContentTypesComponent },
+  {
+    path: 'content-types',
+    component: ContentTypesComponent,
+    canActivate: [AuthGuard],
+  },
 
   {
     path: 'user-listing',
     component: UserListingComponent,
+    canActivate: [AuthGuard],
   },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
-  { path: '* *', component: LoginComponent },
+  { path: '* *', component: HomeComponent },
   { path: '', component: LoginComponent },
 ];
 

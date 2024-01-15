@@ -35,6 +35,8 @@ export class HomeComponent {
   contentCard!: ElementRef;
   // isNavbarOpen = false;
 
+  isadmin = false;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -42,6 +44,13 @@ export class HomeComponent {
     private contentTypeService: ContentTypeService,
     public dialog: MatDialog
   ) {}
+  ngDoCheck(): void {
+    if (this.authService.getuserrole() === 'admin') {
+      this.isadmin = true;
+    } else {
+      this.isadmin = false;
+    }
+  }
 
   public async logout() {
     try {
@@ -165,12 +174,7 @@ export class HomeComponent {
   public getUserName() {
     return sessionStorage.getItem('username');
   }
-  public isUserAdmin(): boolean {
-    const userrole = sessionStorage.getItem('userrole');
-    const username = sessionStorage.getItem('username');
 
-    return userrole === 'admin' && username === 'admin';
-  }
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.isNavbarOpen = window.innerWidth >= 1200;

@@ -20,8 +20,7 @@ export class AuthGuard implements CanActivate {
     private tostr: ToastrService
   ) {}
   public canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    route: ActivatedRouteSnapshot
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
@@ -30,12 +29,13 @@ export class AuthGuard implements CanActivate {
     if (this.service.isloggedin()) {
       if (route.url.length > 0) {
         let menu = route.url[0].path;
-        if (menu == 'user') {
+        if (menu == 'user-listing') {
           if (this.service.getuserrole() == 'admin') {
             return true;
           } else {
-            this.router.navigate(['']);
             this.tostr.warning('You dont have access.');
+            this.router.navigateByUrl('/home');
+
             return false;
           }
         } else {
