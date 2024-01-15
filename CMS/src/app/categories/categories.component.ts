@@ -77,7 +77,7 @@ export class CategoriesComponent implements OnInit {
       this.loadCategories();
     });
   }
-  // onFilterOptionChange(option: string): void {
-  //   this.selectedFilterOption = option;
-  // }
+  onFilterOptionChange(option: string): void {
+    this.selectedFilterOption = option;
+  }
 }
