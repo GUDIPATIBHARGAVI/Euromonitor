@@ -45,10 +45,4 @@ describe('ContentTypeComponent', () => {
     expect(component.selectedFilterOption).toEqual('alphabet');
     expect(component.filterText).toEqual('');
   });
-
-  // it('should update selectedFilterOption on filter option change', () => {
-  //   const newFilterOption = 'alphabet';
-  //   component.filterContentTypes();
-  //   expect(component.selectedFilterOption).toEqual(newFilterOption);
-  // });
 });

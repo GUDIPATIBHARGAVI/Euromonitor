@@ -29,7 +29,6 @@ import { LoginComponent } from './login/login.component';
 import { UserListingComponent } from './user-listing/user-listing.component';
 import { UpdatepopupComponent } from './updatepopup/updatepopup.component';
 import { HomeComponent } from './home/home.component';
-
 import { CategoryFilterPipe } from './pipes/category-filter.pipe';
 
 import { ContentTypeFilterPipe } from './pipes/content-type-filter.pipe';

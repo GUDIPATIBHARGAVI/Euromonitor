@@ -18,6 +18,19 @@ export class UpdatepopupComponent implements OnInit {
   ) {}
 
   editdata: any;
+  rolelist: any;
+
+  registerform = this.builder.group({
+    id: this.builder.control(''),
+
+    name: this.builder.control(''),
+    password: this.builder.control(''),
+    email: this.builder.control(''),
+    number: this.builder.control(''),
+    gender: this.builder.control('male'),
+    role: this.builder.control('', Validators.required),
+    isactive: this.builder.control(false),
+  });
   ngOnInit(): void {
     this.service.GetAllRole().subscribe((res) => {
       this.rolelist = res;
@@ -38,19 +51,7 @@ export class UpdatepopupComponent implements OnInit {
       });
     }
   }
-  rolelist: any;
 
-  registerform = this.builder.group({
-    id: this.builder.control(''),
-
-    name: this.builder.control(''),
-    password: this.builder.control(''),
-    email: this.builder.control(''),
-    number: this.builder.control(''),
-    gender: this.builder.control('male'),
-    role: this.builder.control('', Validators.required),
-    isactive: this.builder.control(false),
-  });
   public UpdateUser() {
     if (this.registerform) {
       this.service

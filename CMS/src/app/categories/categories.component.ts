@@ -52,7 +52,6 @@ export class CategoriesComponent implements OnInit {
 
   toggleEdit(category: Category): void {
     if (this.selectedCategory && this.selectedCategory.id === category.id) {
-      // Save changes
       this.editCategory(category, this.selectedCategory.category);
       this.selectedCategory = undefined;
     } else {
