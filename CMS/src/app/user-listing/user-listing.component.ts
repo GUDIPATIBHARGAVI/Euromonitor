@@ -18,7 +18,7 @@ export class UserListingComponent implements AfterViewInit {
     private service: AuthService,
     private dialog: MatDialog
   ) {
-    this.LoadUser();
+    this.loadUser();
   }
 
   userlist: any;
@@ -27,7 +27,7 @@ export class UserListingComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   ngAfterViewInit(): void {}
-  LoadUser() {
+  public loadUser() {
     this.service.Getall().subscribe((res) => {
       this.userlist = res;
 
@@ -69,6 +69,6 @@ export class UserListingComponent implements AfterViewInit {
   }
 
   public opendialog() {
-    this.LoadUser();
+    this.loadUser();
   }
 }

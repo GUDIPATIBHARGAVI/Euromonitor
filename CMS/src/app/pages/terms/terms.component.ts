@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class TermsComponent {
   constructor(private router: Router) {}
-  navigateToHome() {
+  public navigateToHome() {
     this.router.navigateByUrl('/home');
   }
 }

@@ -19,7 +19,7 @@ export class CategoriesComponent implements OnInit {
     this.loadCategories();
   }
 
-  onSubmit(categoryForm: NgForm) {
+  public onSubmit(categoryForm: NgForm) {
     const categoryData = {
       category: categoryForm.value.category,
     };
@@ -32,7 +32,7 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  loadCategories() {
+  private loadCategories() {
     this.categoryService.getCategories().subscribe((categories) => {
       this.categories = categories.map((category, index) => ({
         id: index + 1,
@@ -41,7 +41,7 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  editCategory(category: Category, newCategory: string): void {
+  public editCategory(category: Category, newCategory: string): void {
     this.categoryService
       .editCategory(category.id, newCategory)
       .subscribe(() => {
@@ -50,7 +50,7 @@ export class CategoriesComponent implements OnInit {
       });
   }
 
-  toggleEdit(category: Category): void {
+  public toggleEdit(category: Category): void {
     if (this.selectedCategory && this.selectedCategory.id === category.id) {
       this.editCategory(category, this.selectedCategory.category);
       this.selectedCategory = undefined;
@@ -59,7 +59,7 @@ export class CategoriesComponent implements OnInit {
     }
   }
 
-  deleteCategory(category: Category): void {
+  public deleteCategory(category: Category): void {
     console.log('Deleting category:', category);
 
     const categoryId = this.categories.find(
@@ -76,7 +76,7 @@ export class CategoriesComponent implements OnInit {
       this.loadCategories();
     });
   }
-  onFilterOptionChange(option: string): void {
+  public onFilterOptionChange(option: string): void {
     this.selectedFilterOption = option;
   }
 }

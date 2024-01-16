@@ -13,7 +13,9 @@ export class ContentTypeService {
 
   constructor(private http: HttpClient) {}
 
-  public addContentType(contentTypeData: { contentType: string }): Observable<any> {
+  public addContentType(contentTypeData: {
+    contentType: string;
+  }): Observable<any> {
     return this.http.post(this.apiUrl, contentTypeData);
   }
 
@@ -39,7 +41,7 @@ export class ContentTypeService {
     return this.http.put(url, updatedContentType);
   }
 
-  deleteContentType(contentTypeId: number): Observable<any> {
+  public deleteContentType(contentTypeId: number): Observable<any> {
     const url = `${this.apiUrl}/${contentTypeId}`;
     return this.http.delete(url).pipe(
       tap((response: any) => console.log('Delete Response:', response)),
