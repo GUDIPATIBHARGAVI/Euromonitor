@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TermsComponent } from './pages/terms/terms.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { AboutComponent } from './pages/about/about.component';
+import { TermsComponent } from './components/pages/terms/terms.component';
+import { ContactComponent } from './components/pages/contact/contact.component';
+import { AboutComponent } from './components/pages/about/about.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { PostComponent } from './components/post/post.component';
