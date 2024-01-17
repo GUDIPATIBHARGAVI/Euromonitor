@@ -8,10 +8,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { ContentService } from '../services/contents.service';
-import { ContentTypeService } from '../services/content-type.service';
+import { ContentService } from 'src/app/services/contents.service';
+import { ContentTypeService } from 'src/app/services/content-type.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

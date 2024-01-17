@@ -4,19 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { TermsComponent } from './pages/terms/terms.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { PostComponent } from './post/post.component';
-import { NewPostComponent } from './post/new-post/new-post.component';
-import { EditContentComponent } from './post/edit-content/edit-content.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { UserListingComponent } from './user-listing/user-listing.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { PostComponent } from './components/post/post.component';
+import { NewPostComponent } from './components/post/new-post/new-post.component';
+import { EditContentComponent } from './components/post/edit-content/edit-content.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserListingComponent } from './components/user-listing/user-listing.component';
 import { AuthGuard } from './guard/auth.guard';
-import { HomeComponent } from './home/home.component';
-import { ContentTypesComponent } from './content-types/content-types.component';
+import { HomeComponent } from './components/home/home.component';
+import { ContentTypesComponent } from './components/content-types/content-types.component';
 
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { homedir } from 'os';
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },

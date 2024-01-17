@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentService } from '../services/contents.service';
+import { ContentService } from 'src/app/services/contents.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-post',

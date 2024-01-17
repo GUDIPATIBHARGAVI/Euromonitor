@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ContentTypeService } from '../services/content-type.service';
-import { ContentType } from '../models/content-type.model';
+import { ContentTypeService } from 'src/app/services/content-type.service';
+import { ContentType } from 'src/app/models/content-type.model';
 @Component({
   selector: 'app-content-types',
   templateUrl: './content-types.component.html',

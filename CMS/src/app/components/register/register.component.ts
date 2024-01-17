@@ -6,7 +6,7 @@ import {
   AsyncValidatorFn,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
