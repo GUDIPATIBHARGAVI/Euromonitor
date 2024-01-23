@@ -92,51 +92,78 @@ export class RegisterComponent {
     value: string,
     fieldName: string
   ): Observable<{ [key: string]: any } | null> {
-    return this.http
-      .get<any[]>(`http://localhost:3000/users?${type}=${value}`)
-      .pipe(
-        map((res) => {
-          if (res.length > 0) {
-            const error = { [`${type}Exists`]: true };
-            this.toastr.warning(`${fieldName} already exists.`);
-            return error;
-          }
-          return null;
-        }),
-        catchError(() => of(null))
-      );
+    const url = `http://localhost:3000/users?${type}=${value}`;
+    return this.http.get<any[]>(url).pipe(
+      map((res) => this.handleDuplicateValue(res, fieldName)),
+      catchError(() => of(null))
+    );
+  }
+
+  private handleDuplicateValue(
+    res: any[],
+    fieldName: string
+  ): { [key: string]: any } | null {
+    if (this.hasDuplicate(res)) {
+      this.showDuplicateWarning(fieldName);
+      return { [`${this.getType(res)}Exists`]: true };
+    }
+    return null;
+  }
+
+  private hasDuplicate(res: any[]): boolean {
+    return res.length > 0;
+  }
+
+  private showDuplicateWarning(fieldName: string): void {
+    this.toastr.warning(`${fieldName} already exists.`);
+  }
+
+  private getType(res: any[]): string {
+    return res.length > 0 ? 'type' : '';
   }
 
   private displayValidationErrors() {
-    const passwordControl = this.registerform.get('password');
-    const emailControl = this.registerform.get('email');
-    const numberControl = this.registerform.get('number');
-    const nameControl = this.registerform.get('id');
+    this.displayError(
+      'password',
+      'Password should contain at least one capital letter, one number, and be at least 8 characters long.',
+      'Password Requirements'
+    );
+    this.displayError(
+      'email',
+      'Enter a valid email address.',
+      'Email Validation'
+    );
+    this.displayError(
+      'number',
+      'Enter a valid 10-digit mobile number.',
+      'Mobile Number Validation'
+    );
+    this.displayError('id', 'Enter Username with at least 4 characters');
+  }
 
-    if (passwordControl && passwordControl.hasError('pattern')) {
+  private displayError(
+    controlName: string,
+    errorMessage: string,
+    toastrTitle?: string
+  ) {
+    const control = this.registerform.get(controlName);
+
+    if (control && control.errors) {
       this.toastr.warning(
-        'Password should contain at least one capital letter, one number, and be at least 8 characters long.',
-        'Password Requirements'
+        errorMessage,
+        toastrTitle || this.getDefaultToastrTitle(controlName)
       );
     }
+  }
 
-    if (emailControl && emailControl.hasError('email')) {
-      this.toastr.warning('Enter a valid email address.', 'Email Validation');
-    }
+  private getDefaultToastrTitle(controlName: string): string {
+    const titleMap: { [key: string]: string } = {
+      password: 'Password Requirements',
+      email: 'Email Validation',
+      number: 'Mobile Number Validation',
+      id: 'Username Validation',
+    };
 
-    if (
-      numberControl &&
-      (numberControl.hasError('required') ||
-        numberControl.hasError('maxlength') ||
-        numberControl?.hasError('minlength'))
-    ) {
-      this.toastr.warning(
-        'Enter a valid 10-digit mobile number.',
-        'Mobile Number Validation'
-      );
-    }
-    if (nameControl && nameControl.hasError('minlength')) {
-      this.toastr.warning('Enter Username with atleast 5 characters');
-    }
+    return titleMap[controlName] || 'Validation Error';
   }
 }
