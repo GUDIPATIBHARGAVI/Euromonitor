@@ -2,7 +2,7 @@
   <h3>{{ movie.title }}</h3>
   <img [src]="movie.poster" alt="{{ movie.title }} Poster" />
   <div class="button-container">
-    <button (click)="voteformovie(movie)">
+    <button (click)="voteForMovie(movie)">
       {{ movie.isVoted ? "Unvote" : "Vote" }}
     </button>
     <p *ngIf="movie.isVoted">Voted!</p>
